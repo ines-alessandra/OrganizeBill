@@ -4,7 +4,12 @@ import java.util.*;
 import java.math.*;
 import br.edu.ufape.organizeBill.model.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter @Setter @NoArgsConstructor
 public  class UsuarioResponse  {
 	private String cpfUsuario;
 	private Date dataRegistro;
@@ -14,7 +19,7 @@ public  class UsuarioResponse  {
 	private List<DespesasResponse> despesas; 
 	private List<CategoriaResponse> categoria; 
 	private List<ObjetivoFinanceiroResponse> objetivoFinanceiro; 
-	private List<ReceitaResponse> receita; 
+	private List<ReceitaResponse> receita;
 
 
 
@@ -41,39 +46,5 @@ public  class UsuarioResponse  {
 			.map(ReceitaResponse::new)
 			.toList();	
 
-	}
-
-	
-	public 	String getCpfUsuario () {
-		return this.cpfUsuario;
-	}
-
-	public 	Date getDataRegistro () {
-		return this.dataRegistro;
-	}
-
-	public 	String getSenha () {
-		return this.senha;
-	}
-
-	public 	String getNome () {
-		return this.nome;
-	}
-
-	public 	String getEmail () {
-		return this.email;
-	}
-
-	public List<DespesasResponse> getDespesas () {
-		return this.despesas;
-	}
-	public List<CategoriaResponse> getCategoria () {
-		return this.categoria;
-	}
-	public List<ObjetivoFinanceiroResponse> getObjetivoFinanceiro () {
-		return this.objetivoFinanceiro;
-	}
-	public List<ReceitaResponse> getReceita () {
-		return this.receita;
 	}
 }

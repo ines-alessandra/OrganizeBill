@@ -4,7 +4,12 @@ import java.util.*;
 import java.math.*;
 import br.edu.ufape.organizeBill.model.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter @Setter @NoArgsConstructor
 public  class CategoriaResponse  {
 	private long codCategoria;
 	private String nome;
@@ -24,24 +29,6 @@ public  class CategoriaResponse  {
 	}
 
 	
-	public 	long getCodCategoria () {
-		return this.codCategoria;
-	}
 
-	public 	String getNome () {
-		return this.nome;
-	}
-
-	public 	String getDescricao () {
-		return this.descricao;
-	}
-
-	public 	Double getGastoMedio () {
-		return this.gastoMedio;
-	}
-
-	public 	Date getDataMensal () {
-		return this.dataMensal;
-	}
 
 }

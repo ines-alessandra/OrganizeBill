@@ -4,7 +4,12 @@ import java.util.*;
 import java.math.*;
 import br.edu.ufape.organizeBill.model.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter @Setter @NoArgsConstructor
 public  class ReceitaRequest  {
 	private long codReceita;
 	private String descricao;
@@ -26,28 +31,6 @@ public  class ReceitaRequest  {
 		obj.setData(getData());
 	}
 
-	public ReceitaRequest () {
-		
-	}
-	
-	public 	long getCodReceita () {
-		return this.codReceita;
-	}
 
-	public 	String getDescricao () {
-		return this.descricao;
-	}
-
-	public 	String getTipoReceita () {
-		return this.tipoReceita;
-	}
-
-	public 	Double getValor () {
-		return this.valor;
-	}
-
-	public 	Date getData () {
-		return this.data;
-	}
 
 }

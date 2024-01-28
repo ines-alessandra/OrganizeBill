@@ -1,12 +1,32 @@
 package br.edu.ufape.organizeBill.model;
 
-import java.util.*;
-import jakarta.persistence.*;
-import java.math.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+import java.util.Date;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public  class ObjetivoFinanceiro  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,71 +39,6 @@ public  class ObjetivoFinanceiro  {
 	private Double valor;
 	private String descricao;
 
-	public ObjetivoFinanceiro () {
-		super();
-	}
 
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	public 	String getDataCriacao () {
-		return this.dataCriacao;
-	}
-	
-	public void setDataCriacao (String dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-	
-	public 	long getCodObjetivo () {
-		return this.codObjetivo;
-	}
-	
-	public void setCodObjetivo (long codObjetivo) {
-		this.codObjetivo = codObjetivo;
-	}
-	
-	public 	Double getValorTransitorio () {
-		return this.valorTransitorio;
-	}
-	
-	public void setValorTransitorio (Double valorTransitorio) {
-		this.valorTransitorio = valorTransitorio;
-	}
-	
-	public 	Date getDataLimite () {
-		return this.dataLimite;
-	}
-	
-	public void setDataLimite (Date dataLimite) {
-		this.dataLimite = dataLimite;
-	}
-	
-	public 	Double getValorMeta () {
-		return this.valorMeta;
-	}
-	
-	public void setValorMeta (Double valorMeta) {
-		this.valorMeta = valorMeta;
-	}
-	
-	public 	Double getValor () {
-		return this.valor;
-	}
-	
-	public void setValor (Double valor) {
-		this.valor = valor;
-	}
-	
-	public 	String getDescricao () {
-		return this.descricao;
-	}
-	
-	public void setDescricao (String descricao) {
-		this.descricao = descricao;
-	}
 	
 }
