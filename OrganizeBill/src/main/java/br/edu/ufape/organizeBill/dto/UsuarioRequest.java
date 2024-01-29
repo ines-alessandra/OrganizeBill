@@ -4,7 +4,12 @@ import java.util.*;
 import java.math.*;
 import br.edu.ufape.organizeBill.model.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter @Setter @NoArgsConstructor
 public  class UsuarioRequest  {
 	private String cpfUsuario;
 	private Date dataRegistro;
@@ -46,40 +51,5 @@ public  class UsuarioRequest  {
 			.toList());	
 	}
 
-	public UsuarioRequest () {
-		
-	}
-	
-	public 	String getCpfUsuario () {
-		return this.cpfUsuario;
-	}
 
-	public 	Date getDataRegistro () {
-		return this.dataRegistro;
-	}
-
-	public 	String getSenha () {
-		return this.senha;
-	}
-
-	public 	String getNome () {
-		return this.nome;
-	}
-
-	public 	String getEmail () {
-		return this.email;
-	}
-
-	public List<DespesasRequest> getDespesas () {
-		return this.despesas;
-	}
-	public List<CategoriaRequest> getCategoria () {
-		return this.categoria;
-	}
-	public List<ObjetivoFinanceiroRequest> getObjetivoFinanceiro () {
-		return this.objetivoFinanceiro;
-	}
-	public List<ReceitaRequest> getReceita () {
-		return this.receita;
-	}
 }

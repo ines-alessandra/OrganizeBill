@@ -1,12 +1,30 @@
 package br.edu.ufape.organizeBill.model;
 
-import java.util.*;
-import jakarta.persistence.*;
-import java.math.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public  class Categoria  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,55 +35,6 @@ public  class Categoria  {
 	private Double gastoMedio;
 	private Date dataMensal;
 
-	public Categoria () {
-		super();
-	}
 
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	public 	long getCodCategoria () {
-		return this.codCategoria;
-	}
-	
-	public void setCodCategoria (long codCategoria) {
-		this.codCategoria = codCategoria;
-	}
-	
-	public 	String getNome () {
-		return this.nome;
-	}
-	
-	public void setNome (String nome) {
-		this.nome = nome;
-	}
-	
-	public 	String getDescricao () {
-		return this.descricao;
-	}
-	
-	public void setDescricao (String descricao) {
-		this.descricao = descricao;
-	}
-	
-	public 	Double getGastoMedio () {
-		return this.gastoMedio;
-	}
-	
-	public void setGastoMedio (Double gastoMedio) {
-		this.gastoMedio = gastoMedio;
-	}
-	
-	public 	Date getDataMensal () {
-		return this.dataMensal;
-	}
-	
-	public void setDataMensal (Date dataMensal) {
-		this.dataMensal = dataMensal;
-	}
 	
 }

@@ -1,12 +1,32 @@
 package br.edu.ufape.organizeBill.model;
 
-import java.util.*;
-import jakarta.persistence.*;
-import java.math.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+import java.util.Date;
+import java.util.List;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public  class Usuario  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +38,7 @@ public  class Usuario  {
 	private String email;
 	@OneToMany
 	@JoinColumn(name = "usuario_id")
-	private List<Despesas> despesas; 
+	private List<Despesas> despesas;
 	@OneToMany
 	@JoinColumn(name = "usuario_id")
 	private List<Categoria> categoria; 
@@ -29,83 +49,5 @@ public  class Usuario  {
 	@JoinColumn(name = "usuario_id")
 	private List<Receita> receita; 
 
-	public Usuario () {
-		super();
-	}
 
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	public 	String getCpfUsuario () {
-		return this.cpfUsuario;
-	}
-	
-	public void setCpfUsuario (String cpfUsuario) {
-		this.cpfUsuario = cpfUsuario;
-	}
-	
-	public 	Date getDataRegistro () {
-		return this.dataRegistro;
-	}
-	
-	public void setDataRegistro (Date dataRegistro) {
-		this.dataRegistro = dataRegistro;
-	}
-	
-	public 	String getSenha () {
-		return this.senha;
-	}
-	
-	public void setSenha (String senha) {
-		this.senha = senha;
-	}
-	
-	public 	String getNome () {
-		return this.nome;
-	}
-	
-	public void setNome (String nome) {
-		this.nome = nome;
-	}
-	
-	public 	String getEmail () {
-		return this.email;
-	}
-	
-	public void setEmail (String email) {
-		this.email = email;
-	}
-	
-	public  List<Despesas>  getDespesas () {
-		return this.despesas;
-	}
-	
-	public void setDespesas ( List<Despesas>  despesas) {
-		this.despesas = despesas;
-	}
-	public  List<Categoria>  getCategoria () {
-		return this.categoria;
-	}
-	
-	public void setCategoria ( List<Categoria>  categoria) {
-		this.categoria = categoria;
-	}
-	public  List<ObjetivoFinanceiro>  getObjetivoFinanceiro () {
-		return this.objetivoFinanceiro;
-	}
-	
-	public void setObjetivoFinanceiro ( List<ObjetivoFinanceiro>  objetivoFinanceiro) {
-		this.objetivoFinanceiro = objetivoFinanceiro;
-	}
-	public  List<Receita>  getReceita () {
-		return this.receita;
-	}
-	
-	public void setReceita ( List<Receita>  receita) {
-		this.receita = receita;
-	}
 }

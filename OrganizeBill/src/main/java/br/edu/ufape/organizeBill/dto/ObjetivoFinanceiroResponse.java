@@ -4,7 +4,12 @@ import java.util.*;
 import java.math.*;
 import br.edu.ufape.organizeBill.model.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter @Setter @NoArgsConstructor
 public  class ObjetivoFinanceiroResponse  {
 	private String dataCriacao;
 	private long codObjetivo;
@@ -28,32 +33,6 @@ public  class ObjetivoFinanceiroResponse  {
 	}
 
 	
-	public 	String getDataCriacao () {
-		return this.dataCriacao;
-	}
 
-	public 	long getCodObjetivo () {
-		return this.codObjetivo;
-	}
-
-	public 	Double getValorTransitorio () {
-		return this.valorTransitorio;
-	}
-
-	public 	Date getDataLimite () {
-		return this.dataLimite;
-	}
-
-	public 	Double getValorMeta () {
-		return this.valorMeta;
-	}
-
-	public 	Double getValor () {
-		return this.valor;
-	}
-
-	public 	String getDescricao () {
-		return this.descricao;
-	}
 
 }
