@@ -1,7 +1,6 @@
 package br.edu.ufape.organizeBill.dto;
 
 import java.util.*;
-import java.math.*;
 import br.edu.ufape.organizeBill.model.*;
 
 import lombok.Getter;
