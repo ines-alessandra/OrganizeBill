@@ -29,6 +29,11 @@ public class Facade {
 	public List<Despesas> getAllDespesas() {
 		return despesasService.getAllDespesas();
 	}
+	
+	public List<Despesas> findByCategoria(long CategoriaId) {
+		Categoria categoria = findCategoriaById(CategoriaId);
+		return despesasService.findByCategoria(categoria);
+	}
 
 	public void deleteDespesas(Despesas persistentObject) {
 		despesasService.deleteDespesas(persistentObject);
@@ -53,6 +58,10 @@ public class Facade {
 
 	public Usuario findUsuarioByCpf(String cpf) {
 		return usuarioService.findUsuarioByCpf(cpf);
+	}
+	
+	public double calcularTotalReceitasMensais(String cpf) {
+	    return usuarioService.calcularTotalReceitasMensais(cpf);
 	}
 
 	public List<Usuario> getAllUsuario() {

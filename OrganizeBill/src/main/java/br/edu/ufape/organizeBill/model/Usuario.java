@@ -2,8 +2,6 @@ package br.edu.ufape.organizeBill.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -19,9 +17,6 @@ import lombok.ToString;
 
 import java.util.Date;
 import java.util.List;
-
-import org.hibernate.validator.constraints.br.CPF;
-
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)@Getter

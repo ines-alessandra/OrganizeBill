@@ -1,9 +1,12 @@
 package br.edu.ufape.organizeBill.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.edu.ufape.organizeBill.repository.DespesasRepository;
+import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
+import br.edu.ufape.organizeBill.model.Categoria;
 import br.edu.ufape.organizeBill.model.Despesas;
 
 @Service
@@ -41,6 +44,14 @@ public class DespesasService implements DespesasServiceInterface {
 	public List<Despesas> getAllDespesas(){
 		return repository.findAll();
 	}
+	
+	public List<Despesas> findByCategoria(Categoria categoria){
+		List<Despesas> despesas = repository.findByCategoria(categoria);
+		if(despesas.isEmpty()) {
+			throw new ObjectNotFoundException("Despesas");
+		}
+		return despesas;
+	} 
 
 	public void deleteDespesas(Despesas persistentObject){
 		this.deleteDespesas(persistentObject.getCodDespesa());

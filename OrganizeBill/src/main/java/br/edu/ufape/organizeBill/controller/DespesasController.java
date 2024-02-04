@@ -42,6 +42,14 @@ public class DespesasController {
 		}
 	}
 	
+	@GetMapping("despesas/categoria/{CategoriaId}")
+	public List<DespesasResponse> findByCategoria(@PathVariable Long CategoriaId) {
+		return facade.findByCategoria(CategoriaId)
+			.stream()
+			.map(DespesasResponse::new)
+			.toList();
+	}
+	
 	@PostMapping("despesas/{id}")
 	public DespesasResponse updateDespesas(@PathVariable Long id, @Valid @RequestBody DespesasRequest obj) {
 		try {
