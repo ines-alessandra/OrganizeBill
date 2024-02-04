@@ -34,8 +34,12 @@ public class UsuarioService implements UsuarioServiceInterface {
 		return repository.save(transientObject);
 	}
 
-	public Usuario findUsuarioById(long id) {
-		return repository.findById(id).orElseThrow( () -> new RuntimeException("It doesn't exist Usuario with id = " + id));
+	public Usuario findUsuarioByCpf(String cpf) {
+		try {
+			return repository.findByCpf(cpf);
+		}catch (RuntimeException e){
+			throw new RuntimeException("It doesn't exist Usuario with cpf = " + cpf);
+		}
 	}
 
 	public List<Usuario> getAllUsuario(){
@@ -43,13 +47,17 @@ public class UsuarioService implements UsuarioServiceInterface {
 	}
 
 	public void deleteUsuario(Usuario persistentObject){
-		this.deleteUsuario(persistentObject.getId());
+		this.deleteUsuario(persistentObject.getCpf());
 		
 	}
 	
-	public void deleteUsuario(long id){
-		Usuario obj = repository.findById(id).orElseThrow( () -> new RuntimeException("It doesn't exist Usuario with id = " + id));
-		repository.delete(obj);
+	public void deleteUsuario(String cpf){
+		try {
+			Usuario obj = repository.findByCpf(cpf);
+			repository.delete(obj);
+		}catch (RuntimeException e){
+			throw new RuntimeException("It doesn't exist Usuario with cpf = " + cpf);
+		}		
 	}	
 	
 	

@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public  class ObjetivoFinanceiroResponse  {
-	private String dataCriacao;
+	private Date dataCriacao;
 	private long codObjetivo;
 	private Double valorTransitorio;
 	private Date dataLimite;

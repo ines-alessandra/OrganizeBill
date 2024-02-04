@@ -43,7 +43,7 @@ public class ReceitaService implements ReceitaServiceInterface {
 	}
 
 	public void deleteReceita(Receita persistentObject){
-		this.deleteReceita(persistentObject.getId());
+		this.deleteReceita(persistentObject.getCodReceita());
 		
 	}
 	

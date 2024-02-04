@@ -43,7 +43,7 @@ public class DespesasService implements DespesasServiceInterface {
 	}
 
 	public void deleteDespesas(Despesas persistentObject){
-		this.deleteDespesas(persistentObject.getId());
+		this.deleteDespesas(persistentObject.getCodDespesa());
 		
 	}
 	

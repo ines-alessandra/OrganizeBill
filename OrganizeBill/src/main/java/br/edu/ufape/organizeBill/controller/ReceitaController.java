@@ -46,7 +46,7 @@ public class ReceitaController {
 	public ReceitaResponse updateReceita(@PathVariable Long id, @Valid @RequestBody ReceitaRequest obj) {
 		try {
 			Receita o = obj.toReceita();
-			o.setId(id);
+			o.setCodReceita(id);
 			return new ReceitaResponse(facade.updateReceita(o));
 		} catch (RuntimeException ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Receita " + id + " not found.");

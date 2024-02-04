@@ -30,7 +30,6 @@ import java.util.Date;
 public  class Receita  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	private long codReceita;
 	private String descricao;
 	private String tipoReceita;

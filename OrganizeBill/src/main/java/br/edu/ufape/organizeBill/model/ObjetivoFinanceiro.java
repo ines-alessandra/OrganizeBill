@@ -30,9 +30,8 @@ import java.util.Date;
 public  class ObjetivoFinanceiro  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String dataCriacao;
 	private long codObjetivo;
+	private Date dataCriacao;
 	private Double valorTransitorio;
 	private Date dataLimite;
 	private Double valorMeta;

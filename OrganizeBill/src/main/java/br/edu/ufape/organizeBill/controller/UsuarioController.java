@@ -33,34 +33,34 @@ public class UsuarioController {
 		return new UsuarioResponse(facade.saveUsuario(newObj.toUsuario()));
 	}
 	
-	@GetMapping("usuario/{id}")
-	public UsuarioResponse getUsuarioById(@PathVariable Long id) {
+	@GetMapping("usuario/{cpf}")
+	public UsuarioResponse getUsuarioByCpf(@PathVariable String cpf) {
 		try {
-			return new UsuarioResponse(facade.findUsuarioById(id));
+			return new UsuarioResponse(facade.findUsuarioByCpf(cpf));
 		} catch (RuntimeException ex) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + id + " not found.");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + cpf + " not found.");
 		}
 	}
 	
-	@PostMapping("usuario/{id}")
-	public UsuarioResponse updateUsuario(@PathVariable Long id, @Valid @RequestBody UsuarioRequest obj) {
+	@PostMapping("usuario/{cpf}")
+	public UsuarioResponse updateUsuario(@PathVariable String cpf, @Valid @RequestBody UsuarioRequest obj) {
 		try {
 			Usuario o = obj.toUsuario();
-			o.setId(id);
+			o.setCpf(cpf);
 			return new UsuarioResponse(facade.updateUsuario(o));
 		} catch (RuntimeException ex) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + id + " not found.");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + cpf + " not found.");
 		}
 		
 	}
 	
-	@DeleteMapping("usuario/{id}")
-	public String deleteEmployee(@PathVariable Long id) {
+	@DeleteMapping("usuario/{cpf}")
+	public String deleteEmployee(@PathVariable String cpf) {
 		try {
-			facade.deleteUsuario(id);
+			facade.deleteUsuario(cpf);
 			return "";
 		} catch (RuntimeException ex) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + id + " not found.");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + cpf + " not found.");
 		}
 		
 	}

@@ -30,7 +30,6 @@ import java.util.Date;
 public  class Despesas  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	private long codDespesa;
 	private String descricao;
 	private Double valor;

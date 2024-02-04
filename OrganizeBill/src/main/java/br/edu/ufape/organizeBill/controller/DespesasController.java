@@ -46,7 +46,7 @@ public class DespesasController {
 	public DespesasResponse updateDespesas(@PathVariable Long id, @Valid @RequestBody DespesasRequest obj) {
 		try {
 			Despesas o = obj.toDespesas();
-			o.setId(id);
+			o.setCodDespesa(id);
 			return new DespesasResponse(facade.updateDespesas(o));
 		} catch (RuntimeException ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Despesas " + id + " not found.");

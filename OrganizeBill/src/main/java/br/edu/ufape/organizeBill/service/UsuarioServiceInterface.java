@@ -6,10 +6,10 @@ import br.edu.ufape.organizeBill.model.Usuario;
 
 public interface UsuarioServiceInterface {
 	Usuario saveUsuario(Usuario o);
-	Usuario findUsuarioById(long id);
+	Usuario findUsuarioByCpf(String cpf);
 	Usuario updateUsuario(Usuario u);
 	void deleteUsuario(Usuario u);
-	void deleteUsuario(long id);
+	void deleteUsuario(String cpf);
 	List<Usuario> getAllUsuario();
     
     

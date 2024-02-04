@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import br.edu.ufape.organizeBill.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
-	
+	Usuario findByCpf(String cpf);
 
 }

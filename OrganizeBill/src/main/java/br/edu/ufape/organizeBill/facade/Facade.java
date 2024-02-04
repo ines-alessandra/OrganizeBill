@@ -51,8 +51,8 @@ public class Facade {
 		return usuarioService.updateUsuario(transientObject);
 	}
 
-	public Usuario findUsuarioById(long id) {
-		return usuarioService.findUsuarioById(id);
+	public Usuario findUsuarioByCpf(String cpf) {
+		return usuarioService.findUsuarioByCpf(cpf);
 	}
 
 	public List<Usuario> getAllUsuario() {
@@ -63,8 +63,8 @@ public class Facade {
 		usuarioService.deleteUsuario(persistentObject);
 	}
 
-	public void deleteUsuario(long id) {
-		usuarioService.deleteUsuario(id);
+	public void deleteUsuario(String cpf) {
+		usuarioService.deleteUsuario(cpf);
 	}
 	
 

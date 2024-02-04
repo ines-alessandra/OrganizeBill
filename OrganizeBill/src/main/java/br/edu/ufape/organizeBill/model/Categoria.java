@@ -28,13 +28,10 @@ import java.util.Date;
 public  class Categoria  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	private long codCategoria;
 	private String nome;
 	private String descricao;
 	private Double gastoMedio;
 	private Date dataMensal;
-
-
 	
 }

@@ -43,7 +43,7 @@ public class CategoriaService implements CategoriaServiceInterface {
 	}
 
 	public void deleteCategoria(Categoria persistentObject){
-		this.deleteCategoria(persistentObject.getId());
+		this.deleteCategoria(persistentObject.getCodCategoria());
 		
 	}
 	

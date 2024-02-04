@@ -46,7 +46,7 @@ public class CategoriaController {
 	public CategoriaResponse updateCategoria(@PathVariable Long id, @Valid @RequestBody CategoriaRequest obj) {
 		try {
 			Categoria o = obj.toCategoria();
-			o.setId(id);
+			o.setCodCategoria(id);
 			return new CategoriaResponse(facade.updateCategoria(o));
 		} catch (RuntimeException ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria " + id + " not found.");

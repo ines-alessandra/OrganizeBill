@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public  class UsuarioResponse  {
-	private String cpfUsuario;
+	private String cpf;
 	private Date dataRegistro;
 	private String senha;
 	private String nome;
@@ -24,27 +24,31 @@ public  class UsuarioResponse  {
 
 
 	public UsuarioResponse(Usuario obj) {
-		this.cpfUsuario = obj.getCpfUsuario();
+		this.cpf = obj.getCpf();
 		this.dataRegistro = obj.getDataRegistro();
 		this.senha = obj.getSenha();
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
-		this.despesas = obj.getDespesas()
-			.stream()
-			.map(DespesasResponse::new)
-			.toList();	
-		this.categoria = obj.getCategoria()
-			.stream()
-			.map(CategoriaResponse::new)
-			.toList();	
-		this.objetivoFinanceiro = obj.getObjetivoFinanceiro()
-			.stream()
-			.map(ObjetivoFinanceiroResponse::new)
-			.toList();	
-		this.receita = obj.getReceita()
-			.stream()
-			.map(ReceitaResponse::new)
-			.toList();	
+		if(obj.getDespesas()!= null)
+			this.despesas = obj.getDespesas()
+				.stream()
+				.map(DespesasResponse::new)
+				.toList();	
+		if(obj.getCategoria()!= null)
+			this.categoria = obj.getCategoria()
+				.stream()
+				.map(CategoriaResponse::new)
+				.toList();	
+		if(obj.getObjetivoFinanceiro()!= null)
+			this.objetivoFinanceiro = obj.getObjetivoFinanceiro()
+				.stream()
+				.map(ObjetivoFinanceiroResponse::new)
+				.toList();	
+		if(obj.getReceita()!= null)
+			this.receita = obj.getReceita()
+				.stream()
+				.map(ReceitaResponse::new)
+				.toList();	
 
 	}
 }

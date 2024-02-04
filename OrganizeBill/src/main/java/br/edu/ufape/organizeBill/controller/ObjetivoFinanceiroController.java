@@ -46,7 +46,7 @@ public class ObjetivoFinanceiroController {
 	public ObjetivoFinanceiroResponse updateObjetivoFinanceiro(@PathVariable Long id, @Valid @RequestBody ObjetivoFinanceiroRequest obj) {
 		try {
 			ObjetivoFinanceiro o = obj.toObjetivoFinanceiro();
-			o.setId(id);
+			o.setCodObjetivo(id);
 			return new ObjetivoFinanceiroResponse(facade.updateObjetivoFinanceiro(o));
 		} catch (RuntimeException ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "ObjetivoFinanceiro " + id + " not found.");

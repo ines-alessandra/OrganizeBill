@@ -1,5 +1,6 @@
 package br.edu.ufape.organizeBill.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,8 @@ import lombok.ToString;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)@Getter
@@ -29,9 +32,8 @@ import java.util.List;
 @ToString
 public  class Usuario  {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String cpfUsuario;
+	@Column(name = "cpf", unique = true, nullable = false, length = 14)
+	private String cpf;
 	private Date dataRegistro;
 	private String senha;
 	private String nome;

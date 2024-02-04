@@ -43,7 +43,7 @@ public class ObjetivoFinanceiroService implements ObjetivoFinanceiroServiceInter
 	}
 
 	public void deleteObjetivoFinanceiro(ObjetivoFinanceiro persistentObject){
-		this.deleteObjetivoFinanceiro(persistentObject.getId());
+		this.deleteObjetivoFinanceiro(persistentObject.getCodObjetivo());
 		
 	}
 	

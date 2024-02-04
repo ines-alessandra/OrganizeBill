@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public  class UsuarioRequest  {
-	private String cpfUsuario;
+	private String cpf;
 	private Date dataRegistro;
 	private String senha;
 	private String nome;
@@ -28,28 +28,33 @@ public  class UsuarioRequest  {
 		return obj;
 	}
 	protected void fillUsuario(Usuario obj) {
-		obj.setCpfUsuario(getCpfUsuario());
+		obj.setCpf(getCpf());
 		obj.setDataRegistro(getDataRegistro());
 		obj.setSenha(getSenha());
 		obj.setNome(getNome());
 		obj.setEmail(getEmail());
-		obj.setDespesas(getDespesas()
-			.stream()
-			.map(a -> a.toDespesas())
-			.toList());	
-		obj.setCategoria(getCategoria()
-			.stream()
-			.map(a -> a.toCategoria())
-			.toList());	
-		obj.setObjetivoFinanceiro(getObjetivoFinanceiro()
-			.stream()
-			.map(a -> a.toObjetivoFinanceiro())
-			.toList());	
-		obj.setReceita(getReceita()
-			.stream()
-			.map(a -> a.toReceita())
-			.toList());	
+		if(getDespesas() != null)
+			obj.setDespesas(getDespesas()
+				.stream()
+				.map(a -> a.toDespesas())
+				.toList());	
+		if(getCategoria() != null)
+			obj.setCategoria(getCategoria()
+				.stream()
+				.map(a -> a.toCategoria())
+				.toList());
+		if(getObjetivoFinanceiro() != null)
+			obj.setObjetivoFinanceiro(getObjetivoFinanceiro()
+				.stream()
+				.map(a -> a.toObjetivoFinanceiro())
+				.toList());	
+		if(getReceita()!= null)
+			obj.setReceita(getReceita()
+				.stream()
+				.map(a -> a.toReceita())
+				.toList());	
 	}
 
+	
 
 }
