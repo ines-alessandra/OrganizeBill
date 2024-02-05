@@ -1,6 +1,6 @@
 package br.edu.ufape.organizeBill.dto;
 
-import java.util.*;
+import java.time.LocalDate;
 import br.edu.ufape.organizeBill.model.*;
 
 import lombok.Getter;
@@ -10,10 +10,10 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public  class ObjetivoFinanceiroRequest  {
-	private Date dataCriacao;
+	private LocalDate dataCriacao;
 	private long codObjetivo;
 	private Double valorTransitorio;
-	private Date dataLimite;
+	private LocalDate dataLimite;
 	private Double valorMeta;
 	private Double valor;
 	private String descricao;

@@ -14,9 +14,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)@Getter
@@ -29,7 +30,8 @@ public  class Usuario  {
 	@Id
 	@Column(name = "cpf", unique = true, nullable = false, length = 14)
 	private String cpf;
-	private Date dataRegistro;
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	private LocalDate dataRegistro;
 	private String senha;
 	private String nome;
 	private String email;

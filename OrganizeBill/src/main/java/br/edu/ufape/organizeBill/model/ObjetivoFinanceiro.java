@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,8 +14,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -31,9 +31,11 @@ public  class ObjetivoFinanceiro  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codObjetivo;
-	private Date dataCriacao;
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	private LocalDate dataCriacao;
 	private Double valorTransitorio;
-	private Date dataLimite;
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	private LocalDate dataLimite;
 	private Double valorMeta;
 	private Double valor;
 	private String descricao;

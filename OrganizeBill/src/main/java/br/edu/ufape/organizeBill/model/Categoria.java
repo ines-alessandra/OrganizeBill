@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,8 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -32,6 +32,7 @@ public  class Categoria  {
 	private String nome;
 	private String descricao;
 	private Double gastoMedio;
-	private Date dataMensal;
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	private LocalDate dataMensal;
 	
 }

@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,8 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -34,8 +34,10 @@ public  class Receita  {
 	private String descricao;
 	private String tipoReceita;
 	private Double valor;
-	private Date data;
-
-
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	private LocalDate data;
+	
+	private boolean fixo;
 	
 }

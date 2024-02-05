@@ -16,8 +16,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -32,11 +33,13 @@ public  class Despesas  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codDespesa;
 	private String descricao;
-	private Double valor;
-	private Date data;
+	private Double valor;	
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	private LocalDate data;
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria; 
 
+	private boolean fixo;
 
 }

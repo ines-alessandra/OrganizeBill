@@ -1,6 +1,6 @@
 package br.edu.ufape.organizeBill.dto;
 
-import java.util.*;
+import java.time.LocalDate;
 import br.edu.ufape.organizeBill.model.*;
 
 import lombok.Getter;
@@ -14,7 +14,7 @@ public  class CategoriaRequest  {
 	private String nome;
 	private String descricao;
 	private Double gastoMedio;
-	private Date dataMensal;
+	private LocalDate dataMensal;
 
 
 	public Categoria toCategoria() {

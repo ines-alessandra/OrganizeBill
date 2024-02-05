@@ -1,6 +1,6 @@
 package br.edu.ufape.organizeBill.dto;
 
-import java.util.*;
+import java.time.LocalDate;
 import br.edu.ufape.organizeBill.model.*;
 
 import lombok.Getter;
@@ -14,7 +14,9 @@ public  class ReceitaResponse  {
 	private String descricao;
 	private String tipoReceita;
 	private Double valor;
-	private Date data;
+	private LocalDate data;
+	private boolean fixo;
+
 
 
 
@@ -24,6 +26,7 @@ public  class ReceitaResponse  {
 		this.tipoReceita = obj.getTipoReceita();
 		this.valor = obj.getValor();
 		this.data = obj.getData();
+		this.fixo = obj.isFixo();
 
 	}
 

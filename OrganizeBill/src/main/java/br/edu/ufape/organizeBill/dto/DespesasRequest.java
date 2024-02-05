@@ -1,6 +1,6 @@
 package br.edu.ufape.organizeBill.dto;
 
-import java.util.*;
+import java.time.LocalDate;
 import br.edu.ufape.organizeBill.model.*;
 
 import lombok.Getter;
@@ -13,8 +13,10 @@ public  class DespesasRequest  {
 	private long codDespesa;
 	private String descricao;
 	private Double valor;
-	private Date data;
+	private LocalDate data;
 	private CategoriaRequest categoria; 
+	private boolean fixo;
+
 
 
 	public Despesas toDespesas() {
@@ -28,6 +30,7 @@ public  class DespesasRequest  {
 		obj.setValor(getValor());
 		obj.setData(getData());
 		obj.setCategoria(getCategoria().toCategoria());	
+		obj.setFixo(isFixo());
 	}
 
 

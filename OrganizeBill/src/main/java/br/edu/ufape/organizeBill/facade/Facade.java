@@ -60,8 +60,8 @@ public class Facade {
 		return usuarioService.findUsuarioByCpf(cpf);
 	}
 	
-	public double calcularTotalReceitasMensais(String cpf) {
-	    return usuarioService.calcularTotalReceitasMensais(cpf);
+	public double calcularTotalReceitasData(String cpf, String data, String tipo) {
+	    return usuarioService.calcularTotalReceitasData(cpf,data, tipo);
 	}
 
 	public List<Usuario> getAllUsuario() {
