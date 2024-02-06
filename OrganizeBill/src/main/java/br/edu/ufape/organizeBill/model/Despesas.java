@@ -37,8 +37,9 @@ public  class Despesas  {
 	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
 	private LocalDate data;
     @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "categoria_id")
-	private Categoria categoria; 
+	private Categoria categoria;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
 
 	private boolean fixo;
 

@@ -35,18 +35,7 @@ public  class Usuario  {
 	private String senha;
 	private String nome;
 	private String email;
-	@OneToMany
-	@JoinColumn(name = "usuario_id")
-	private List<Despesas> despesas;
-	@OneToMany
-	@JoinColumn(name = "usuario_id")
-	private List<Categoria> categoria; 
-	@OneToMany
-	@JoinColumn(name = "usuario_id")
-	private List<ObjetivoFinanceiro> objetivoFinanceiro; 
-	@OneToMany
-	@JoinColumn(name = "usuario_id")
-	private List<Receita> receita; 
+
 
 
 }

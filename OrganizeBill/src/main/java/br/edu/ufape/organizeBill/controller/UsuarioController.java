@@ -43,16 +43,7 @@ public class UsuarioController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario " + cpf + " not found.");
 		}
 	}
-	
-	@GetMapping("/usuario/{cpf}/totalReceitas/{data}/{tipo}")
-	public ResponseEntity<Double> getUsuarioTotalReceitasMensais(@PathVariable String cpf, @PathVariable String data,@PathVariable String tipo) {
-	    try {
-	        double totalReceitasMensais = facade.calcularTotalReceitasData(cpf, data, tipo);
-	        return ResponseEntity.ok(totalReceitasMensais);
-	    } catch (ObjectNotFoundException ex) {
-	        return ResponseEntity.notFound().build();
-	    }
-	}
+
 	
 	@PostMapping("usuario/{cpf}")
 	public UsuarioResponse updateUsuario(@PathVariable String cpf, @Valid @RequestBody UsuarioRequest obj) {

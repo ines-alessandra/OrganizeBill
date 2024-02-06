@@ -16,6 +16,7 @@ public  class ReceitaRequest  {
 	private Double valor;
 	private LocalDate data;
 	private boolean fixo;
+	private UsuarioRequest usuario;
 
 
 
@@ -31,6 +32,7 @@ public  class ReceitaRequest  {
 		obj.setValor(getValor());
 		obj.setData(getData());
 		obj.setFixo(isFixo());
+		obj.setUsuario(getUsuario().toUsuario());
 	}
 
 

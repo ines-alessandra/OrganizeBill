@@ -45,51 +45,7 @@ public class UsuarioService implements UsuarioServiceInterface {
 		}
 	}
 	
-	public List<Receita> getReceitaByData(String cpf, String data, String tipo) {
-	    LocalDate inicio;
-	    LocalDate termino;
 
-	    switch (data) {
-	        case "dia":
-	            inicio = LocalDate.now();
-	            termino = null;
-	            break;
-	        case "semana":
-	            inicio = LocalDate.now();
-	            termino = LocalDate.now().minusDays(7);
-	            break;
-	        case "mes":
-	            inicio = LocalDate.now().withDayOfMonth(1);
-	            termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
-	            break;
-	        case "ano":
-	            inicio = LocalDate.now().withDayOfYear(1);
-	            termino = LocalDate.now().withDayOfYear(LocalDate.now().lengthOfYear());
-	            break;
-	        default:
-	            throw new IllegalArgumentException("Data inválida: " + data);
-	    }
-
-	    return switch (tipo) {
-	        case "fixo" -> repository.findReceitaByPeriodFixo(cpf, inicio, termino);
-	        case "normal" -> repository.findReceitaByPeriod(cpf, inicio, termino);
-	        default -> throw new IllegalArgumentException("Tipo inválido: " + tipo);
-	    };
-	}
-
-
-	public double calcularTotalReceitasData(String cpf, String data, String tipo) {
-	    findUsuarioByCpf(cpf);
-	    List<Receita> receitas = this.getReceitaByData(cpf, data , tipo);
-
-	    if (receitas.isEmpty()) {
-	        throw new ObjectNotFoundException("Receitas");
-	    }
-
-	    return receitas.stream()
-	            .mapToDouble(Receita::getValor)
-	            .sum();
-	}
 
 
 	public List<Usuario> getAllUsuario(){

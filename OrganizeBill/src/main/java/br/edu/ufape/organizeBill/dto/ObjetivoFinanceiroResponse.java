@@ -17,7 +17,7 @@ public  class ObjetivoFinanceiroResponse  {
 	private Double valorMeta;
 	private Double valor;
 	private String descricao;
-
+	private UsuarioResponse usuario;
 
 
 	public ObjetivoFinanceiroResponse(ObjetivoFinanceiro obj) {
@@ -28,6 +28,7 @@ public  class ObjetivoFinanceiroResponse  {
 		this.valorMeta = obj.getValorMeta();
 		this.valor = obj.getValor();
 		this.descricao = obj.getDescricao();
+		this.usuario = new UsuarioResponse(obj.getUsuario());
 
 	}
 

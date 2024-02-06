@@ -2,6 +2,7 @@ package br.edu.ufape.organizeBill.facade;
 
 import java.util.List;
 
+import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,9 +61,9 @@ public class Facade {
 		return usuarioService.findUsuarioByCpf(cpf);
 	}
 	
-	public double calcularTotalReceitasData(String cpf, String data, String tipo) {
-	    return usuarioService.calcularTotalReceitasData(cpf,data, tipo);
-	}
+
+
+
 
 	public List<Usuario> getAllUsuario() {
 		return usuarioService.getAllUsuario();
@@ -132,6 +133,23 @@ public class Facade {
 
 	public void deleteReceita(long id) {
 		receitaService.deleteReceita(id);
+	}
+
+	public List<Receita> getReceitaByData(String cpf, String data, boolean fixo) {
+		return receitaService.getReceitaByData(cpf,data,fixo);
+	}
+
+	public double calcularTotalReceitasData(String cpf, String data, boolean fixo) {
+		findUsuarioByCpf(cpf);
+		List<Receita> receitas = this.getReceitaByData(cpf, data , fixo);
+
+		if (receitas.isEmpty()) {
+			throw new ObjectNotFoundException("Receitas");
+		}
+
+		return receitas.stream()
+				.mapToDouble(Receita::getValor)
+				.sum();
 	}
 	
 

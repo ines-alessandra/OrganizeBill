@@ -15,6 +15,7 @@ public  class CategoriaRequest  {
 	private String descricao;
 	private Double gastoMedio;
 	private LocalDate dataMensal;
+	private UsuarioRequest usuario;
 
 
 	public Categoria toCategoria() {
@@ -28,6 +29,7 @@ public  class CategoriaRequest  {
 		obj.setDescricao(getDescricao());
 		obj.setGastoMedio(getGastoMedio());
 		obj.setDataMensal(getDataMensal());
+		obj.setUsuario(getUsuario().toUsuario());
 	}
 
 

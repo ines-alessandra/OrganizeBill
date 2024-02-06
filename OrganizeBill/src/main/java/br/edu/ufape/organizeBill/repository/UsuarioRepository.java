@@ -15,13 +15,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
 	Usuario findByCpf(String cpf);
 	
-	@Query("SELECT t.receita FROM Usuario t JOIN t.receita WHERE t.cpf = :cpf and t.receita.date BETWEEN :inicio and :termino")
-	List<Receita> findReceitaByPeriod(String cpf, LocalDate inicio, LocalDate termino);
-	
-	@Query("SELECT t.receita FROM Usuario t JOIN t.receita WHERE t.cpf = :cpf and t.receita.fixo = true and t.receita.date BETWEEN :inicio and :termino")
-	List<Receita> findReceitaByPeriodFixo(String cpf, LocalDate inicio, LocalDate termino);
 
-	@Query("SELECT t.receita FROM Usuario t JOIN t.receita WHERE t.cpf = :cpf and t.receita.fixo = false and t.receita.date BETWEEN :inicio and :termino")
-	List<Receita> findReceitaByPeriodNaoFixo(String cpf, LocalDate inicio, LocalDate termino);
+
+
+
+
+
 
 }
