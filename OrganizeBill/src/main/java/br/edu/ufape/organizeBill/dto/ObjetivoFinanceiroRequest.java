@@ -17,6 +17,7 @@ public  class ObjetivoFinanceiroRequest  {
 	private Double valorMeta;
 	private Double valor;
 	private String descricao;
+	private UsuarioRequest usuario;
 
 
 	public ObjetivoFinanceiro toObjetivoFinanceiro() {
@@ -32,6 +33,7 @@ public  class ObjetivoFinanceiroRequest  {
 		obj.setValorMeta(getValorMeta());
 		obj.setValor(getValor());
 		obj.setDescricao(getDescricao());
+		obj.setUsuario(getUsuario().toUsuario());
 	}
 
 

@@ -16,10 +16,7 @@ public  class UsuarioRequest  {
 	private String senha;
 	private String nome;
 	private String email;
-	private List<DespesasRequest> despesas; 
-	private List<CategoriaRequest> categoria; 
-	private List<ObjetivoFinanceiroRequest> objetivoFinanceiro; 
-	private List<ReceitaRequest> receita; 
+
 
 
 	public Usuario toUsuario() {
@@ -33,26 +30,7 @@ public  class UsuarioRequest  {
 		obj.setSenha(getSenha());
 		obj.setNome(getNome());
 		obj.setEmail(getEmail());
-		if(getDespesas() != null)
-			obj.setDespesas(getDespesas()
-				.stream()
-				.map(a -> a.toDespesas())
-				.toList());	
-		if(getCategoria() != null)
-			obj.setCategoria(getCategoria()
-				.stream()
-				.map(a -> a.toCategoria())
-				.toList());
-		if(getObjetivoFinanceiro() != null)
-			obj.setObjetivoFinanceiro(getObjetivoFinanceiro()
-				.stream()
-				.map(a -> a.toObjetivoFinanceiro())
-				.toList());	
-		if(getReceita()!= null)
-			obj.setReceita(getReceita()
-				.stream()
-				.map(a -> a.toReceita())
-				.toList());	
+
 	}
 
 	

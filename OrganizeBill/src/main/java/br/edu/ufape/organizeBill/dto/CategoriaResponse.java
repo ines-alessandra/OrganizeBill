@@ -15,6 +15,7 @@ public  class CategoriaResponse  {
 	private String descricao;
 	private Double gastoMedio;
 	private LocalDate dataMensal;
+	private UsuarioResponse usuario;
 
 
 
@@ -24,6 +25,7 @@ public  class CategoriaResponse  {
 		this.descricao = obj.getDescricao();
 		this.gastoMedio = obj.getGastoMedio();
 		this.dataMensal = obj.getDataMensal();
+		this.usuario = new UsuarioResponse(obj.getUsuario());
 
 	}
 

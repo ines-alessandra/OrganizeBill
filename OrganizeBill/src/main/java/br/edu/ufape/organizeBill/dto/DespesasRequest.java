@@ -16,6 +16,7 @@ public  class DespesasRequest  {
 	private LocalDate data;
 	private CategoriaRequest categoria; 
 	private boolean fixo;
+	private UsuarioRequest usuario;
 
 
 
@@ -31,6 +32,7 @@ public  class DespesasRequest  {
 		obj.setData(getData());
 		obj.setCategoria(getCategoria().toCategoria());	
 		obj.setFixo(isFixo());
+		obj.setUsuario(getUsuario().toUsuario());
 	}
 
 

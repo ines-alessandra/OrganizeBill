@@ -2,6 +2,8 @@ package br.edu.ufape.organizeBill.controller;
 
 import java.util.List;
 
+import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
@@ -19,7 +21,17 @@ import br.edu.ufape.organizeBill.dto.*;
 public class ReceitaController {
 	@Autowired
 	private Facade facade;
-	
+
+	@GetMapping("/usuario/{cpf}/totalReceitas/{data}/{tipo}")
+	public ResponseEntity<Double> getTotalReceitasMensais(@PathVariable String cpf, @PathVariable String data, @PathVariable boolean tipo) {
+		try {
+			double totalReceitasMensais = facade.calcularTotalReceitasData(cpf, data, tipo);
+			return ResponseEntity.ok(totalReceitasMensais);
+		} catch (ObjectNotFoundException ex) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
 	@GetMapping("receita")
 	public List<ReceitaResponse> getAllReceita() {
 		return facade.getAllReceita()

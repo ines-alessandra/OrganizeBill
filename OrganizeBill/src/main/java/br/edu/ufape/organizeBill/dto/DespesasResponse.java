@@ -16,6 +16,7 @@ public  class DespesasResponse  {
 	private LocalDate data;
 	private CategoriaResponse categoria; 
 	private boolean fixo;
+	private UsuarioResponse usuario;
 
 
 
@@ -27,6 +28,7 @@ public  class DespesasResponse  {
 		this.data = obj.getData();
 		this.categoria = new CategoriaResponse(obj.getCategoria());
 		this.fixo = obj.isFixo();
+		this.usuario = new UsuarioResponse(obj.getUsuario());
 	}
 
 	

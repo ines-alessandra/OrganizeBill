@@ -11,7 +11,8 @@ import br.edu.ufape.organizeBill.model.Receita;
 @Repository
 public interface ReceitaRepository extends JpaRepository<Receita, Long> {
 
+	List<Receita> findReceitasByDataBetweenAndUsuarioCpf(LocalDate startDate,LocalDate endDate, String cpf);
+
+    List<Receita> findReceitasByDataBetweenAndUsuarioCpfAndFixoIsTrue(LocalDate startDate,LocalDate endDate, String cpf);
 	
-	@Query("SELECT t.receita FROM Usuario t JOIN t.receita WHERE t.cpf = :cpf and t.receita.date BETWEEN :inicio and :termino")
-	List<Receita> findReceitaByPeriod(String cpf, LocalDate inicio, LocalDate termino);
 }

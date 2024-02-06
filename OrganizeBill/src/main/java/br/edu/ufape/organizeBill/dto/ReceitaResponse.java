@@ -16,6 +16,7 @@ public  class ReceitaResponse  {
 	private Double valor;
 	private LocalDate data;
 	private boolean fixo;
+	private UsuarioResponse usuario;
 
 
 
@@ -27,6 +28,7 @@ public  class ReceitaResponse  {
 		this.valor = obj.getValor();
 		this.data = obj.getData();
 		this.fixo = obj.isFixo();
+		this.usuario = new UsuarioResponse(obj.getUsuario());
 
 	}
 
