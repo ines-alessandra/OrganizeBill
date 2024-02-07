@@ -44,6 +44,23 @@ public class Facade {
 		despesasService.deleteDespesas(id);
 	}
 	
+	public List<Despesas> getDespesasByData(String cpf, String data, boolean fixo) {
+		return despesasService.getDespesasByData(cpf,data,fixo);
+	}
+
+	public double calcularTotalDespesasData(String cpf, String data, boolean fixo) {
+		findUsuarioByCpf(cpf);
+		List<Despesas> despesas = this.getDespesasByData(cpf, data , fixo);
+
+		if (despesas.isEmpty()) {
+			throw new ObjectNotFoundException("Despesas");
+		}
+
+		return despesas.stream()
+				.mapToDouble(Despesas::getValor)
+				.sum();
+	}
+
 
 	//Usuario--------------------------------------------------------------
 	@Autowired
@@ -60,10 +77,6 @@ public class Facade {
 	public Usuario findUsuarioByCpf(String cpf) {
 		return usuarioService.findUsuarioByCpf(cpf);
 	}
-	
-
-
-
 
 	public List<Usuario> getAllUsuario() {
 		return usuarioService.getAllUsuario();

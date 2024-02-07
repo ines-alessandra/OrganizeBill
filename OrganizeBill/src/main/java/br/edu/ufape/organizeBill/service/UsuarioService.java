@@ -1,12 +1,10 @@
 package br.edu.ufape.organizeBill.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.edu.ufape.organizeBill.repository.UsuarioRepository;
 import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
-import br.edu.ufape.organizeBill.model.Receita;
 import br.edu.ufape.organizeBill.model.Usuario;
 
 @Service

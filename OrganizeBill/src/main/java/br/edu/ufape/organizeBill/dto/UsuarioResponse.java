@@ -1,7 +1,6 @@
 package br.edu.ufape.organizeBill.dto;
 
 import java.time.LocalDate;
-import java.util.*;
 import br.edu.ufape.organizeBill.model.*;
 
 import lombok.Getter;

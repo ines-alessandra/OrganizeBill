@@ -3,7 +3,6 @@ package br.edu.ufape.organizeBill.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.edu.ufape.organizeBill.repository.ReceitaRepository;
@@ -84,8 +83,6 @@ public class ReceitaService implements ReceitaServiceInterface {
 			return repository.findReceitasByDataBetweenAndUsuarioCpfAndFixoIsTrue (inicio, termino,cpf);
 		else
 			return repository.findReceitasByDataBetweenAndUsuarioCpf (inicio, termino,cpf);
-
-
 	}
 
 

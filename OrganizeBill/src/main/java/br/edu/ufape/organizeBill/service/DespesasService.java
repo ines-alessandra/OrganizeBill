@@ -1,5 +1,6 @@
 package br.edu.ufape.organizeBill.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,36 @@ public class DespesasService implements DespesasServiceInterface {
 		repository.delete(obj);
 	}	
 	
+	public List<Despesas> getDespesasByData(String cpf, String data, boolean fixo) {
+		LocalDate inicio;
+		LocalDate termino;
+
+		switch (data) {
+			case "dia":
+				inicio = LocalDate.now();
+				termino = inicio;
+				break;
+			case "semana":
+				inicio = LocalDate.now();
+				termino = LocalDate.now().minusDays(7);
+				break;
+			case "mes":
+				inicio = LocalDate.now().withDayOfMonth(1);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
+			case "ano":
+				inicio = LocalDate.now().withDayOfYear(1);
+				termino = LocalDate.now().withDayOfYear(LocalDate.now().lengthOfYear());
+				break;
+			default:
+				throw new IllegalArgumentException("Data inválida: " + data);
+		}
+
+		if (fixo)
+			return repository.findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrue (inicio, termino,cpf);
+		else
+			return repository.findDespesasByDataBetweenAndUsuarioCpf (inicio, termino,cpf);
+	}
 	
 	
 }

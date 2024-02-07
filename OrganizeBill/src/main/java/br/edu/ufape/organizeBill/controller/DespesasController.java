@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.validation.Valid;
 
 import br.edu.ufape.organizeBill.model.Despesas;
 import br.edu.ufape.organizeBill.facade.Facade;
 import br.edu.ufape.organizeBill.dto.*;
+import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 
 
 @CrossOrigin (origins = "http://localhost:8081/" )
@@ -26,6 +28,16 @@ public class DespesasController {
 			.stream()
 			.map(DespesasResponse::new)
 			.toList();
+	}
+	
+	@GetMapping("/usuario/{cpf}/totalDespesas/{data}/{tipo}")
+	public ResponseEntity<Double> getTotalDespesasMensais(@PathVariable String cpf, @PathVariable String data, @PathVariable boolean tipo) {
+		try {
+			double totalDespesasMensais = facade.calcularTotalDespesasData(cpf, data, tipo);
+			return ResponseEntity.ok(totalDespesasMensais);
+		} catch (ObjectNotFoundException ex) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PostMapping("despesas")
