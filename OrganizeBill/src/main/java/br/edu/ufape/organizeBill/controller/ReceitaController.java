@@ -40,6 +40,14 @@ public class ReceitaController {
 			.toList();
 	}
 	
+	@GetMapping("receita/usuario/{cpf}/{data}/{fixo}")
+	public List<ReceitaResponse> findReceitaByData(@PathVariable String cpf, @PathVariable String data, @PathVariable boolean fixo) {
+		return facade.getReceitaByData(cpf,data,fixo)
+			.stream()
+			.map(ReceitaResponse::new)
+			.toList();
+	}
+	
 	@PostMapping("receita")
 	public ReceitaResponse createReceita(@Valid @RequestBody ReceitaRequest newObj) {
 		return new ReceitaResponse(facade.saveReceita(newObj.toReceita()));

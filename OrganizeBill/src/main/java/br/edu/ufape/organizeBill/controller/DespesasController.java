@@ -62,6 +62,14 @@ public class DespesasController {
 			.toList();
 	}
 	
+	@GetMapping("despesas/usuario/{cpf}/{data}/{fixo}")
+	public List<DespesasResponse> findDespesasByData(@PathVariable String cpf, @PathVariable String data, @PathVariable boolean fixo) {
+		return facade.getDespesasByData(cpf,data,fixo)
+			.stream()
+			.map(DespesasResponse::new)
+			.toList();
+	}
+	
 	@PostMapping("despesas/{id}")
 	public DespesasResponse updateDespesas(@PathVariable Long id, @Valid @RequestBody DespesasRequest obj) {
 		try {
