@@ -38,8 +38,8 @@ public class CategoriaService implements CategoriaServiceInterface {
 		return repository.findById(id).orElseThrow( () -> new RuntimeException("It doesn't exist Categoria with id = " + id));
 	}
 
-	public List<Categoria> getAllCategoria(){
-		return repository.findAll();
+	public List<Categoria> getAllCategoria(String cpf){
+		return repository.findByUsuarioCpf(cpf);
 	}
 
 	public void deleteCategoria(Categoria persistentObject){

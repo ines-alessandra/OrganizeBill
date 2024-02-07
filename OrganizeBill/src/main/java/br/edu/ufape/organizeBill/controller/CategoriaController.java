@@ -20,9 +20,9 @@ public class CategoriaController {
 	@Autowired
 	private Facade facade;
 	
-	@GetMapping("categoria")
-	public List<CategoriaResponse> getAllCategoria() {
-		return facade.getAllCategoria()
+	@GetMapping("usuario/{cpf}/categoria")
+	public List<CategoriaResponse> getAllCategoria(@PathVariable String cpf) {
+		return facade.getAllCategoria(cpf)
 			.stream()
 			.map(CategoriaResponse::new)
 			.toList();

@@ -60,6 +60,23 @@ public class Facade {
 				.mapToDouble(Despesas::getValor)
 				.sum();
 	}
+	
+	public List<Despesas> getDespesasByCategoriaData(long codCategoria, String data) {
+		return despesasService.getDespesasByCategoriaData(codCategoria,data);
+	}
+
+	public double calcularTotalDespesasCategoriaData(long codCategoria, String data) {
+		findCategoriaById(codCategoria);
+		List<Despesas> despesas = this.getDespesasByCategoriaData(codCategoria, data);
+
+		if (despesas.isEmpty()) {
+			throw new ObjectNotFoundException("Despesas");
+		}
+
+		return despesas.stream()
+				.mapToDouble(Despesas::getValor)
+				.sum();
+	}
 
 
 	//Usuario--------------------------------------------------------------
@@ -107,8 +124,8 @@ public class Facade {
 		return categoriaService.findCategoriaById(id);
 	}
 
-	public List<Categoria> getAllCategoria() {
-		return categoriaService.getAllCategoria();
+	public List<Categoria> getAllCategoria(String cpf) {
+		return categoriaService.getAllCategoria(cpf);
 	}
 
 	public void deleteCategoria(Categoria persistentObject) {

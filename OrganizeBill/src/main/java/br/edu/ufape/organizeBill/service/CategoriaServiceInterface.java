@@ -10,7 +10,7 @@ public interface CategoriaServiceInterface {
 	Categoria updateCategoria(Categoria u);
 	void deleteCategoria(Categoria u);
 	void deleteCategoria(long id);
-	List<Categoria> getAllCategoria();
+	List<Categoria> getAllCategoria(String cpf);
     
     
 

@@ -53,6 +53,7 @@ public class DespesasService implements DespesasServiceInterface {
 		}
 		return despesas;
 	} 
+	
 
 	public void deleteDespesas(Despesas persistentObject){
 		this.deleteDespesas(persistentObject.getCodDespesa());
@@ -95,5 +96,31 @@ public class DespesasService implements DespesasServiceInterface {
 			return repository.findDespesasByDataBetweenAndUsuarioCpf (inicio, termino,cpf);
 	}
 	
+	public List<Despesas> getDespesasByCategoriaData(Long codCategoria, String data) {
+		LocalDate inicio;
+		LocalDate termino;
+
+		switch (data) {
+			case "dia":
+				inicio = LocalDate.now();
+				termino = inicio;
+				break;
+			case "semana":
+				inicio = LocalDate.now();
+				termino = LocalDate.now().minusDays(7);
+				break;
+			case "mes":
+				inicio = LocalDate.now().withDayOfMonth(1);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
+			case "ano":
+				inicio = LocalDate.now().withDayOfYear(1);
+				termino = LocalDate.now().withDayOfYear(LocalDate.now().lengthOfYear());
+				break;
+			default:
+				throw new IllegalArgumentException("Data inválida: " + data);
+		}
+			return repository.findDespesasByDataBetweenAndCategoriaCodCategoria(inicio, termino, codCategoria);
+	}
 	
 }

@@ -84,10 +84,5 @@ public class ReceitaService implements ReceitaServiceInterface {
 		else
 			return repository.findReceitasByDataBetweenAndUsuarioCpf (inicio, termino,cpf);
 	}
-
-
-
-	
-	
 	
 }

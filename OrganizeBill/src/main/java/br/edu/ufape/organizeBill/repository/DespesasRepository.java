@@ -15,7 +15,6 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 	List<Despesas> findByCategoria(Categoria categoria);
 	List<Despesas> findDespesasByDataBetweenAndUsuarioCpf(LocalDate startDate,LocalDate endDate, String cpf);
     List<Despesas> findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrue(LocalDate startDate,LocalDate endDate, String cpf);
+    List<Despesas> findDespesasByDataBetweenAndCategoriaCodCategoria(LocalDate startDate,LocalDate endDate, long codCategoria);
 	
-	
-
 }
