@@ -27,6 +27,13 @@ public class ObjetivoFinanceiroService implements ObjetivoFinanceiroServiceInter
 	}	
 
 	public ObjetivoFinanceiro saveObjetivoFinanceiro(ObjetivoFinanceiro newInstance) {
+		if (newInstance.getDataLimite().isEqual(newInstance.getDataCriacao())) {
+            throw new IllegalArgumentException("A data limite não pode ser igual à data de início.");
+        }
+
+        if (newInstance.getDataLimite().isBefore(newInstance.getDataCriacao())) {
+            throw new IllegalArgumentException("A data limite deve ser posterior à data de início.");
+        }
 		return repository.save(newInstance);
 	}
 

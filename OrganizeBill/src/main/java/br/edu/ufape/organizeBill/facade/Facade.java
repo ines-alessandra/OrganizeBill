@@ -15,14 +15,16 @@ import br.edu.ufape.organizeBill.service.*;
 public class Facade {
 	
 	 @Scheduled(
-			 //cron = "0 0 0 1 * *"
-			 fixedRate = 10000) // Executar à meia-noite no primeiro dia de cada mês
+			 cron = "0 0 0 1 * *"
+			//fixedRate = 10000
+			 ) // Executer à meia-noite no primer dia de cada mês
 	    public void verificarMudancaDeMes() {
-		 //	receitasContinuas();
-	 	//	despesasContinuas();
+		 	receitasContinuas();
+	 		despesasContinuas();
 	 		valorMetaContinuo();
 	 		
 	    }
+	    
 	
 	//Despesas--------------------------------------------------------------
 	@Autowired
@@ -81,7 +83,7 @@ public class Facade {
 		List<Despesas> despesas = this.getDespesasByData(cpf, data , fixo);
 
 		if (despesas.isEmpty()) {
-			throw new ObjectNotFoundException("Despesas");
+			return 0;
 		}
 
 		return despesas.stream()
@@ -202,7 +204,7 @@ public class Facade {
 		List<Receita> receitas = this.getReceitaByData(cpf, data , fixo);
 
 		if (receitas.isEmpty()) {
-			throw new ObjectNotFoundException("Receitas");
+			return  0;
 		}
 
 		return receitas.stream()
