@@ -12,7 +12,6 @@ import lombok.Setter;
 public  class ReceitaResponse  {
 	private long codReceita;
 	private String descricao;
-	private String tipoReceita;
 	private Double valor;
 	private LocalDate data;
 	private boolean fixo;
@@ -24,7 +23,6 @@ public  class ReceitaResponse  {
 	public ReceitaResponse(Receita obj) {
 		this.codReceita = obj.getCodReceita();
 		this.descricao = obj.getDescricao();
-		this.tipoReceita = obj.getTipoReceita();
 		this.valor = obj.getValor();
 		this.data = obj.getData();
 		this.fixo = obj.isFixo();

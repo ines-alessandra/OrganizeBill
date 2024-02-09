@@ -27,8 +27,7 @@ public  class Categoria  {
 	private String nome;
 	private String descricao;
 	private Double gastoMedio;
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
-	private LocalDate dataMensal;
+	
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Usuario usuario;

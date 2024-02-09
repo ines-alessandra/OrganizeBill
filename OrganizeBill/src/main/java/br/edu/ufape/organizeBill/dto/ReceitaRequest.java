@@ -12,7 +12,6 @@ import lombok.Setter;
 public  class ReceitaRequest  {
 	private long codReceita;
 	private String descricao;
-	private String tipoReceita;
 	private Double valor;
 	private LocalDate data;
 	private boolean fixo;
@@ -28,7 +27,6 @@ public  class ReceitaRequest  {
 	protected void fillReceita(Receita obj) {
 		obj.setCodReceita(getCodReceita());
 		obj.setDescricao(getDescricao());
-		obj.setTipoReceita(getTipoReceita());
 		obj.setValor(getValor());
 		obj.setData(getData());
 		obj.setFixo(isFixo());

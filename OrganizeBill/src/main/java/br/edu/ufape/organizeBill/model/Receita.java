@@ -27,7 +27,6 @@ public  class Receita  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codReceita;
 	private String descricao;
-	private String tipoReceita;
 	private Double valor;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")

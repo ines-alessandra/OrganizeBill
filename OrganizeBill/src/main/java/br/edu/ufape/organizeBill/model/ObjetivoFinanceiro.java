@@ -26,6 +26,7 @@ public  class ObjetivoFinanceiro  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codObjetivo;
+	private String nome;
 	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
 	private LocalDate dataCriacao;
 	private Double valorTransitorio;
@@ -34,6 +35,8 @@ public  class ObjetivoFinanceiro  {
 	private Double valorMeta;
 	private Double valor;
 	private String descricao;
+	@OneToOne
+	private Categoria categoria;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Usuario usuario;

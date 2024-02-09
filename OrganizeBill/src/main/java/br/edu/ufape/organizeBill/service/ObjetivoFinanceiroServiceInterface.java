@@ -10,7 +10,7 @@ public interface ObjetivoFinanceiroServiceInterface {
 	ObjetivoFinanceiro updateObjetivoFinanceiro(ObjetivoFinanceiro u);
 	void deleteObjetivoFinanceiro(ObjetivoFinanceiro u);
 	void deleteObjetivoFinanceiro(long id);
-	List<ObjetivoFinanceiro> getAllObjetivoFinanceiro();
+	List<ObjetivoFinanceiro> getAllObjetivoFinanceiro(String cpf);
     
     
 

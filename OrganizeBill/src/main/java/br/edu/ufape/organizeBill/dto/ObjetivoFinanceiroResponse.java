@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public  class ObjetivoFinanceiroResponse  {
 	private LocalDate dataCriacao;
+	private String nome;
 	private long codObjetivo;
 	private Double valorTransitorio;
 	private LocalDate dataLimite;
@@ -18,14 +19,17 @@ public  class ObjetivoFinanceiroResponse  {
 	private Double valor;
 	private String descricao;
 	private UsuarioResponse usuario;
+	private CategoriaResponse categoria;
 
 
 	public ObjetivoFinanceiroResponse(ObjetivoFinanceiro obj) {
 		this.dataCriacao = obj.getDataCriacao();
 		this.codObjetivo = obj.getCodObjetivo();
+		this.nome = obj.getNome();
 		this.valorTransitorio = obj.getValorTransitorio();
 		this.dataLimite = obj.getDataLimite();
 		this.valorMeta = obj.getValorMeta();
+		this.categoria = new CategoriaResponse(obj.getCategoria());
 		this.valor = obj.getValor();
 		this.descricao = obj.getDescricao();
 		this.usuario = new UsuarioResponse(obj.getUsuario());

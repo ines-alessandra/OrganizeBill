@@ -82,6 +82,10 @@ public class DespesasService implements DespesasServiceInterface {
 				inicio = LocalDate.now().withDayOfMonth(1);
 				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
 				break;
+			case "mesPassado":
+				inicio = LocalDate.now().minusMonths(1).withDayOfMonth(1);
+				termino = LocalDate.now().minusMonths(1).withDayOfMonth(LocalDate.now().minusMonths(1).lengthOfMonth());
+				break;
 			case "ano":
 				inicio = LocalDate.now().withDayOfYear(1);
 				termino = LocalDate.now().withDayOfYear(LocalDate.now().lengthOfYear());

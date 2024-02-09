@@ -20,9 +20,9 @@ public class ObjetivoFinanceiroController {
 	@Autowired
 	private Facade facade;
 	
-	@GetMapping("objetivoFinanceiro")
-	public List<ObjetivoFinanceiroResponse> getAllObjetivoFinanceiro() {
-		return facade.getAllObjetivoFinanceiro()
+	@GetMapping("usuario/{cpf}/objetivoFinanceiro")
+	public List<ObjetivoFinanceiroResponse> getAllObjetivoFinanceiro(@PathVariable String cpf) {
+		return facade.getAllObjetivoFinanceiro( cpf)
 			.stream()
 			.map(ObjetivoFinanceiroResponse::new)
 			.toList();

@@ -45,6 +45,13 @@ public class DespesasController {
 		return new DespesasResponse(facade.saveDespesas(newObj.toDespesas()));
 	}
 	
+	
+	@PostMapping("despesasContinua")
+	public void despesasContinua() {
+		facade.despesasContinuas();
+	}
+	
+	
 	@GetMapping("despesas/{id}")
 	public DespesasResponse getDespesasById(@PathVariable Long id) {
 		try {

@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public  class ObjetivoFinanceiroRequest  {
 	private LocalDate dataCriacao;
+	private String nome;
 	private long codObjetivo;
 	private Double valorTransitorio;
 	private LocalDate dataLimite;
@@ -28,6 +29,7 @@ public  class ObjetivoFinanceiroRequest  {
 	protected void fillObjetivoFinanceiro(ObjetivoFinanceiro obj) {
 		obj.setDataCriacao(getDataCriacao());
 		obj.setCodObjetivo(getCodObjetivo());
+		obj.setNome(getNome());
 		obj.setValorTransitorio(getValorTransitorio());
 		obj.setDataLimite(getDataLimite());
 		obj.setValorMeta(getValorMeta());

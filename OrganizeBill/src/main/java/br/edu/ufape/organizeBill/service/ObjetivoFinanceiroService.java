@@ -38,8 +38,8 @@ public class ObjetivoFinanceiroService implements ObjetivoFinanceiroServiceInter
 		return repository.findById(id).orElseThrow( () -> new RuntimeException("It doesn't exist ObjetivoFinanceiro with id = " + id));
 	}
 
-	public List<ObjetivoFinanceiro> getAllObjetivoFinanceiro(){
-		return repository.findAll();
+	public List<ObjetivoFinanceiro> getAllObjetivoFinanceiro(String cpf){
+		return repository.findByUsuarioCpf(cpf);
 	}
 
 	public void deleteObjetivoFinanceiro(ObjetivoFinanceiro persistentObject){

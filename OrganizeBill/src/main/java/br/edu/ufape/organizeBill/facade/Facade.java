@@ -1,9 +1,11 @@
 package br.edu.ufape.organizeBill.facade;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufape.organizeBill.model.*;
@@ -11,6 +13,17 @@ import br.edu.ufape.organizeBill.service.*;
 
 @Service
 public class Facade {
+	
+	 @Scheduled(
+			 //cron = "0 0 0 1 * *"
+			 fixedRate = 10000) // Executar à meia-noite no primeiro dia de cada mês
+	    public void verificarMudancaDeMes() {
+		 //	receitasContinuas();
+	 	//	despesasContinuas();
+	 		valorMetaContinuo();
+	 		
+	    }
+	
 	//Despesas--------------------------------------------------------------
 	@Autowired
 	private DespesasService  despesasService;
@@ -42,6 +55,21 @@ public class Facade {
 
 	public void deleteDespesas(long id) {
 		despesasService.deleteDespesas(id);
+	}
+	
+	public void despesasContinuas() {
+		List<Usuario> usuarios = getAllUsuario(); 
+		usuarios.stream().forEach(usuario->
+		{
+			List<Despesas> listaDespesas = getDespesasByData(usuario.getCpf(), "mesPassado", true);
+			listaDespesas.stream().forEach(despesa -> {
+				if(despesa.isFixo()) {
+					Despesas newDespesa = new Despesas(0,despesa.getDescricao(),despesa.getValor(),
+							LocalDate.now().withDayOfMonth(1),despesa.getCategoria(),despesa.getUsuario(),true);
+					saveDespesas(newDespesa);
+				}
+			});
+		});
 	}
 	
 	public List<Despesas> getDespesasByData(String cpf, String data, boolean fixo) {
@@ -180,14 +208,33 @@ public class Facade {
 		return receitas.stream()
 				.mapToDouble(Receita::getValor)
 				.sum();
-	}
+	}	
 	
+	public void receitasContinuas() {
+		List<Usuario> usuarios = getAllUsuario(); 
+		usuarios.stream().forEach(usuario->
+		{
+			List<Receita> listaReceitas = getReceitaByData(usuario.getCpf(), "mesPassado", true);
+			listaReceitas.stream().forEach(receita -> {
+				if(receita.isFixo()) {
+					Receita newReceita = new Receita(0,receita.getDescricao(),receita.getValor(),
+							LocalDate.now().withDayOfMonth(1),receita.getUsuario(),true);
+					saveReceita(newReceita);
+				}
+			});
+		});
+	}
 
 	//ObjetivoFinanceiro--------------------------------------------------------------
 	@Autowired
 	private ObjetivoFinanceiroService  objetivoFinanceiroService;
 		
 	public ObjetivoFinanceiro saveObjetivoFinanceiro(ObjetivoFinanceiro newInstance) {
+		Categoria categoria = new Categoria(0,newInstance.getNome(),newInstance.getDescricao(),newInstance.getValorTransitorio()
+				, newInstance.getUsuario());
+		saveCategoria(categoria);
+		newInstance.setCategoria(categoria);
+		
 		return objetivoFinanceiroService.saveObjetivoFinanceiro(newInstance);
 	}
 
@@ -199,8 +246,8 @@ public class Facade {
 		return objetivoFinanceiroService.findObjetivoFinanceiroById(id);
 	}
 
-	public List<ObjetivoFinanceiro> getAllObjetivoFinanceiro() {
-		return objetivoFinanceiroService.getAllObjetivoFinanceiro();
+	public List<ObjetivoFinanceiro> getAllObjetivoFinanceiro(String cpf) {
+		return objetivoFinanceiroService.getAllObjetivoFinanceiro(cpf);
 	}
 
 	public void deleteObjetivoFinanceiro(ObjetivoFinanceiro persistentObject) {
@@ -209,6 +256,33 @@ public class Facade {
 
 	public void deleteObjetivoFinanceiro(long id) {
 		objetivoFinanceiroService.deleteObjetivoFinanceiro(id);
+	}
+	
+	public void valorMetaContinuo() {
+		List<Usuario> usuarios = getAllUsuario(); 
+		usuarios.stream().forEach(usuario->
+		{
+			double receita = calcularTotalReceitasData(usuario.getCpf(),"mes" , false);
+			double despesas = calcularTotalDespesasData(usuario.getCpf(),"mes" , false);
+			final double[] valor = {0}; // Usando um array de double
+
+			List<ObjetivoFinanceiro> listaObjetivos = getAllObjetivoFinanceiro(usuario.getCpf());
+			listaObjetivos.stream().forEach(objetivo -> {
+			    double saldoDisponivel = (receita - despesas) - (valor[0] + objetivo.getValorTransitorio());
+			    if (saldoDisponivel >= 0) {
+			    	objetivo.setValor(objetivo.getValor() + objetivo.getValorTransitorio());
+			    	Despesas despesa = new Despesas(0,("Transacao para " + objetivo.getNome()+ "no valor de" +
+			    	objetivo.getValorTransitorio()), objetivo.getValorTransitorio(),LocalDate.now(),objetivo.getCategoria(),
+			    			objetivo.getUsuario(), false);
+			    	saveDespesas(despesa);
+			    	updateObjetivoFinanceiro(objetivo);
+			    	
+			        valor[0] += objetivo.getValorTransitorio(); // Atualizando o valor no array
+			    }
+			});
+			
+			
+		});
 	}
 	
 
