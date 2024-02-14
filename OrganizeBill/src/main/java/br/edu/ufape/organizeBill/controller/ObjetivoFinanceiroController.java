@@ -54,6 +54,15 @@ public class ObjetivoFinanceiroController {
 		
 	}
 	
+	@PostMapping("objetivoFinanceiro/{id}/valor/{valor}")
+	public ObjetivoFinanceiroResponse addValorObjetivoMeta(@PathVariable long id, @PathVariable double valor) {
+		if(valor < 0) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "You cannot add a negative value: " + valor);
+		}
+		return new ObjetivoFinanceiroResponse(facade.addValorObjetivoMeta(valor, id));		
+	}
+	
+	
 	@DeleteMapping("objetivoFinanceiro/{id}")
 	public String deleteEmployee(@PathVariable Long id) {
 		try {

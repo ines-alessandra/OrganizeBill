@@ -5,8 +5,10 @@ import java.util.List;
 
 import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.edu.ufape.organizeBill.model.*;
 import br.edu.ufape.organizeBill.service.*;
@@ -287,5 +289,25 @@ public class Facade {
 		});
 	}
 	
+	public ObjetivoFinanceiro addValorObjetivoMeta(double valor, long codObjetivo) {
+		ObjetivoFinanceiro objetivo = findObjetivoFinanceiroById(codObjetivo);
+		double receita = calcularTotalReceitasData(objetivo.getUsuario().getCpf(),"mes" , false);
+		double despesas = calcularTotalDespesasData(objetivo.getUsuario().getCpf(),"mes" , false);
+		
+		if((receita - despesas) - valor >= 0) {
+			objetivo.setValor(objetivo.getValor() + valor);
+	    	Despesas despesa = new Despesas(0,("Transacao para " + objetivo.getNome()+ "no valor de" +
+	    	valor), valor,LocalDate.now(),objetivo.getCategoria(),
+	    			objetivo.getUsuario(), false);
+	    	saveDespesas(despesa);
+	    	updateObjetivoFinanceiro(objetivo);
+		}
+		else {
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "You don't have this value to make this transaction: " + valor);
+		}
+		
+		return objetivo;
+		
+	}
 
 }
