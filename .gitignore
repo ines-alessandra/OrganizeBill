@@ -1,0 +1,33 @@
+HELP.md
+OrganizeBill/target/
+OrganizeBill/.mvn/wrapper/maven-wrapper.jar
+OrganizeBill/**/src/main/**/target/
+OrganizeBill/**/src/test/**/target/
+
+### STS ###
+OrganizeBill/.apt_generated
+OrganizeBill/.classpath
+OrganizeBill/.factorypath
+OrganizeBill/.project
+OrganizeBill/.settings
+OrganizeBill/.springBeans
+OrganizeBill/.sts4-cache
+
+### IntelliJ IDEA ###
+OrganizeBill/.idea
+OrganizeBill/*.iws
+OrganizeBill/*.iml
+OrganizeBill/*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+OrganizeBill/.vscode/

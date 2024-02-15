@@ -23,7 +23,6 @@ public  class Categoria  {
 	private String nome;
 	private String descricao;
 	private Double gastoMedio;
-	
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Usuario usuario;

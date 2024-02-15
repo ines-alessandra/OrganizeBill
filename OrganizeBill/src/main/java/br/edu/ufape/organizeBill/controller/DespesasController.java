@@ -15,7 +15,7 @@ import br.edu.ufape.organizeBill.dto.*;
 import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 
 
-@CrossOrigin (origins = "http://localhost:8081/" )
+@CrossOrigin (origins = "http://localhost:3000/" )
 @RestController
 @RequestMapping("/api/v1/")
 public class DespesasController {

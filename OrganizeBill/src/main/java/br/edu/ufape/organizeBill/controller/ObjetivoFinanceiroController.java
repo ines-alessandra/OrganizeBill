@@ -13,7 +13,7 @@ import br.edu.ufape.organizeBill.facade.Facade;
 import br.edu.ufape.organizeBill.dto.*;
 
 
-@CrossOrigin (origins = "http://localhost:8081/" )
+@CrossOrigin (origins = "http://localhost:3000/" )
 @RestController
 @RequestMapping("/api/v1/")
 public class ObjetivoFinanceiroController {
