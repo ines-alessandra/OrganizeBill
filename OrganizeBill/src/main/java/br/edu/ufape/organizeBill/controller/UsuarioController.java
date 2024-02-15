@@ -67,9 +67,9 @@ public class UsuarioController {
 	}
 
 	@PostMapping("login/{email}/senha/{senha}")
-	public String login(@PathVariable String email, @PathVariable String senha){
+	public UsuarioResponse login(@PathVariable String email, @PathVariable String senha){
 
-			return facade.loginUsuario(email,senha);
+			return new UsuarioResponse(facade.loginUsuario(email,senha));
 
 	}
 	

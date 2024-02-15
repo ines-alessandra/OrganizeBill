@@ -35,13 +35,13 @@ public class UsuarioService implements UsuarioServiceInterface {
 		return repository.save(transientObject);
 	}
 
-	public String login(String email, String password)  {
+	public Usuario login(String email, String password)  {
 		Usuario usuario = findUsuarioByEmail(email);
 		String senha = usuario.getSenha();
 		if(!password.equals(senha)){
 			throw new RuntimeException("Senha incorreta para o login desse email");
 		}
-		return usuario.getCpf();
+		return usuario;
 
 	}
 
