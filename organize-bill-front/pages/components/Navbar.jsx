@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { BuildingLibraryIcon } from '@heroicons/react/24/solid'
 
-
 const Navbar = () => {
   return (
     <>
@@ -24,7 +23,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/objetivo">
-                  <p>Contacts</p>
+                  <p>Objetivo</p>
                 </Link>
               </li>
               <li>
