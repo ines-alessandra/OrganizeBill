@@ -53,6 +53,16 @@ export async function deleteUsuario(cpf) {
   }
 }
 
+export async function loginUsuario(email, senha) {
+  try {
+    const response = await api.post(`/usuario/login/${email}/senha/${senha}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Erro ao logar no usuário com Email ${email}:`, error);
+    throw error;
+  }
+}
+
 
 
 

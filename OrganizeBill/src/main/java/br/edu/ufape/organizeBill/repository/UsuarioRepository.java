@@ -8,5 +8,6 @@ import br.edu.ufape.organizeBill.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
 	Usuario findByCpf(String cpf);
+	Usuario findByEmail(String email);
 
 }

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { createReceita, getAllReceitabyData, getTotalReceitabyData, addValueObjetivo } from "../api/receita";
+import { createReceita, getReceitasByData, getTotalReceitasMensais, updateReceita } from "../api/receita";
 import { useEffect, useState } from "react";
 import style from "./Receita.module.css"
 import Link from "next/link";
