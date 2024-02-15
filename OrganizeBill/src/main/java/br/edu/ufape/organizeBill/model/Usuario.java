@@ -26,7 +26,7 @@ public  class Usuario  {
 	@Id
 	@Column(name = "cpf", unique = true, nullable = false, length = 14)
 	private String cpf;
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataRegistro;
 	private String senha;
 	private String nome;

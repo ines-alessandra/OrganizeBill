@@ -27,10 +27,10 @@ public  class ObjetivoFinanceiro  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codObjetivo;
 	private String nome;
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCriacao;
 	private Double valorTransitorio;
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataLimite;
 	private Double valorMeta;
 	private Double valor;
