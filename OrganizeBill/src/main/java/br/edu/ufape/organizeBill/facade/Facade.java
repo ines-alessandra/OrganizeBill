@@ -119,7 +119,7 @@ public class Facade {
 		return usuarioService.saveUsuario(newInstance);
 	}
 
-	public String loginUsuario(String email, String senha){
+	public Usuario loginUsuario(String email, String senha){
 		return usuarioService.login(email,senha);
 	}
 

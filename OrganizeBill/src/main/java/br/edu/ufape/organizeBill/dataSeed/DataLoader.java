@@ -57,12 +57,12 @@ public class DataLoader implements CommandLineRunner {
 			Usuario user2 = userRepository.findByCpf("88577688499");
 			
 			Receita receita1 = new Receita(	0,"salario", 2000.0, LocalDate.of(2023,2,5), user1, true);
-			Receita receita2 = new Receita(	0,"renda extra", 350.0, LocalDate.of(2023,2,5), user1, true);
+			Receita receita2 = new Receita(	0,"renda extra", 350.0, LocalDate.of(2023,2,5), user1, false);
 			receitaRepository.save(receita1);
 			receitaRepository.save(receita2);
 			
 			Receita receita3 = new Receita(	0,"salario", 4000.0, LocalDate.of(2022,6,8), user2, true);
-			Receita receita4 = new Receita(	0,"renda extra", 500.0, LocalDate.of(2022,6,8), user2, true);
+			Receita receita4 = new Receita(	0,"renda extra", 500.0, LocalDate.of(2022,6,8), user2, false);
 			receitaRepository.save(receita3);
 			receitaRepository.save(receita4);
 		
