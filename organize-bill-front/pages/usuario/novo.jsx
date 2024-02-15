@@ -10,17 +10,33 @@ const novoUsuarioPage = () => {
     email: '',
     senha: '',
     cpf: '',
-    dataEntrada: '', 
+    dataRegistro: '', 
   });
 
   const handleCreateUsuario = async () => {
     try {
-      await createUsuario(novoUsuario);
+      // Chama handleDataEntrada para definir a data de entrada antes de criar o usuário
+      const novoUsuarioComDataEntrada = handleDataEntrada();
+      console.log('Novo usuário com data de entrada:', novoUsuarioComDataEntrada);
+      await createUsuario(novoUsuarioComDataEntrada);
       router.push('/usuario');
     } catch (error) {
       console.error('Erro ao criar usuário:', error);
     }
   };
+  
+  const handleDataEntrada = () => {
+    const data = new Date();
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, '0'); // Convertendo para string antes de chamar padStart()
+    const dia = String(data.getDate()).padStart(2, '0'); // Convertendo para string antes de chamar padStart()
+    const dataFormatada = `${ano}-${mes}-${dia}`;
+    console.log('Data formatada:', dataFormatada);
+    
+    // Retorna um novo objeto de usuário com a data de entrada definida
+    return { ...novoUsuario, dataRegistro: dataFormatada };
+  };
+  
 
   return (
     <div>
@@ -70,16 +86,8 @@ const novoUsuarioPage = () => {
         }
       />
 
-      <label htmlFor="dataEntrada">Data entrada:</label>
-      <input
-        type="text"
-        id="dataEntrada"
-        name="dataEntrada"
-        value={novoUsuario.dataEntrada}
-        onChange={(e) =>
-          setNovoUsuario({ ...novoUsuario, dataEntrada: e.target.value })
-        }
-      />
+      
+    
 
       <button onClick={handleCreateUsuario}>Criar Usuário</button>
     </div>
