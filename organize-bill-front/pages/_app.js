@@ -1,7 +1,13 @@
 import '../app/globals.css';
+import Navbar from './components/Navbar';
 
 const App = ({ Component, pageProps }) => {
-    return <Component {...pageProps} />
+    return (
+        <>
+            <Navbar />
+            <Component {...pageProps} />
+        </>
+    )
 }
 
 export default App;
