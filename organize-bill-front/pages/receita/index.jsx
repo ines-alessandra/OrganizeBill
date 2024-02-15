@@ -6,28 +6,22 @@ import Link from "next/link";
 
 const receita = () => {
     const [receitas, setReceitas] = useState([]);
-    const [usuario, setUsuario] = useState([]);
-    const [filtroSelecionado, setFiltroSelecionado] = useState('mes');  
+
+    const [filtroSelecionado, setFiltroSelecionado] = useState('mes');
 
     useEffect(() => {
-        loadUsuario();
         loadReceitas();
-
     }, [filtroSelecionado]);
 
-    const loadUsuario = () => {
-        const usuarioStorage = JSON.parse(localStorage.getItem('usuario'));
-        console.log('Usuario:', usuarioStorage);
-        setUsuario(usuarioStorage);
-    };
+
 
 
 
     const loadReceitas = async () => {
         try {
-            console.log('Usuario:', usuario)
-            console.log('Filtro:', filtroSelecionado)
-            const receitasData = await getAllReceita();
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+           
+            const receitasData = await getReceitasByData(usuario.cpf, filtroSelecionado, false);
             console.log('Receitas Data:', receitasData);
             setReceitas(Array.isArray(receitasData) ? receitasData : []);
         } catch (error) {

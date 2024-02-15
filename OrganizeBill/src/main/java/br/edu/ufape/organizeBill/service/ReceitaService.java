@@ -64,8 +64,8 @@ public class ReceitaService implements ReceitaServiceInterface {
 				termino = inicio;
 				break;
 			case "semana":
-				inicio = LocalDate.now();
-				termino = LocalDate.now().minusDays(7);
+				inicio = LocalDate.now().minusDays(7);
+				termino = LocalDate.now();
 				break;
 			case "mes":
 				inicio = LocalDate.now().withDayOfMonth(1);
