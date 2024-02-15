@@ -35,6 +35,24 @@ public class UsuarioService implements UsuarioServiceInterface {
 		return repository.save(transientObject);
 	}
 
+	public String login(String email, String password)  {
+		Usuario usuario = findUsuarioByEmail(email);
+		String senha = usuario.getSenha();
+		if(!password.equals(senha)){
+			throw new RuntimeException("Senha incorreta para o login desse email");
+		}
+		return usuario.getCpf();
+
+	}
+
+	public Usuario findUsuarioByEmail(String email) {
+		try {
+			return repository.findByEmail(email);
+		}catch (RuntimeException e){
+			throw new ObjectNotFoundException("Usuario");
+		}
+	}
+
 	public Usuario findUsuarioByCpf(String cpf) {
 		try {
 			return repository.findByCpf(cpf);
