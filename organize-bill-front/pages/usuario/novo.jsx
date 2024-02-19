@@ -39,57 +39,77 @@ const novoUsuarioPage = () => {
   
 
   return (
-    <div>
-      <h1>Criar Novo Usuário</h1>
+    <div className='flex h-screen w-screen place-items-center justify-center items-center max-w-7xl m-auto gap-14'>
+      <div className='w-2/4 border px-10 py-10 rounded-2xl'>
+        <h1 className='text-2xl font-black text-center mb-10'>Criar novo usuário</h1>
 
-      <label htmlFor="cpf">CPF:</label>
-      <input
-        type="text"
-        id="cpf"
-        name="cpf"
-        value={novoUsuario.cpf}
-        onChange={(e) =>
-          setNovoUsuario({ ...novoUsuario, cpf: e.target.value })
-        }
-      />
+        <label 
+          className='block mb-1 text-gray-900' 
+          htmlFor="cpf">CPF:
+        </label>
+        <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full p-1.5  "
+          type="text"
+          id="cpf"
+          name="cpf"
+          value={novoUsuario.cpf}
+          onChange={(e) =>
+            setNovoUsuario({ ...novoUsuario, cpf: e.target.value })
+          }
+        />
 
-      <label htmlFor="nome">Nome:</label>
-      <input
-        type="text"
-        id="nome"
-        name="nome"
-        value={novoUsuario.nome}
-        onChange={(e) =>
-          setNovoUsuario({ ...novoUsuario, nome: e.target.value })
-        }
-      />
+        <label 
+          className='block mb-1 mt-2 text-gray-900' 
+          htmlFor="nome">Nome:
+        </label>
+        <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full p-1.5  "
+          type="text"
+          id="nome"
+          name="nome"
+          value={novoUsuario.nome}
+          onChange={(e) =>
+            setNovoUsuario({ ...novoUsuario, nome: e.target.value })
+          }
+        />
 
-      <label htmlFor="email">Email:</label>
-      <input
-        type="text"
-        id="email"
-        name="email"
-        value={novoUsuario.email}
-        onChange={(e) =>
-          setNovoUsuario({ ...novoUsuario, email: e.target.value })
-        }
-      />
+        <label 
+          className='block mb-1 mt-2 text-gray-900' 
+          htmlFor="email">Email:
+        </label>
+        <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full p-1.5  "
+          type="text"
+          id="email"
+          name="email"
+          value={novoUsuario.email}
+          onChange={(e) =>
+            setNovoUsuario({ ...novoUsuario, email: e.target.value })
+          }
+        />
 
-      <label htmlFor="senha">Senha:</label>
-      <input
-        type="text"
-        id="senha"
-        name="senha"
-        value={novoUsuario.senha}
-        onChange={(e) =>
-          setNovoUsuario({ ...novoUsuario, senha: e.target.value })
-        }
-      />
+        <label 
+          className='block mb-1 mt-2 text-gray-900' 
+          htmlFor="senha">Senha:
+        </label>
+        <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full p-1.5  "
+          type="text"
+          id="senha"
+          name="senha"
+          value={novoUsuario.senha}
+          onChange={(e) =>
+            setNovoUsuario({ ...novoUsuario, senha: e.target.value })
+          }
+        />
 
       
-    
 
-      <button onClick={handleCreateUsuario}>Criar Usuário</button>
+        <button 
+          className='text-white bg-blue-700	border border-gray-300 focus:outline-none hover:bg-blue-800 focus:ring-4 focus:ring-gray-100 font-medium rounded-md text-sm px-5 py-2 me-2 mb-2 mt-10 w-full ' 
+          onClick={handleCreateUsuario}>Criar usuário
+        </button>
+      </div>
     </div>
   );
 };
