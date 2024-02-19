@@ -5,11 +5,13 @@ import { BuildingLibraryIcon } from '@heroicons/react/24/solid'
 const Navbar = () => {
   return (
     <>
-      <div className="w-full h-20 bg-neutral-700 sticky top-0">
-        <div className="container mx-auto px-4 h-full">
+      <div className="w-full box-border	h-20 bg-blue-800 sticky top-0 ">
+        <div className="container max-w-7xl m-auto h-full box-content">
           <div className="flex justify-between items-center h-full">
             {/* <Logo /> */}
-            <BuildingLibraryIcon className="h-6 w-6 text-white" />
+            <Link href="/">
+              <BuildingLibraryIcon className="h-6 w-6 text-white" />
+            </Link>
             <ul className="hidden md:flex gap-x-6 text-white">
               <li>
                 <Link href="/usuario">
@@ -23,7 +25,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/objetivo">
-                  <p>Categorias</p>
+                  <p>Objetivos</p>
                 </Link>
               </li>
               <li>

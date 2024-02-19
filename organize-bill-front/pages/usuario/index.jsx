@@ -46,14 +46,15 @@ const usuario = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-red-500" >Lista de Usuários</h1>
+    <div className="flex flex-col h-screen justify-center items-center">
+      <div className="flex  gap-11">
+        <h1 className="text-2xl font-black" >Lista de Usuários</h1>
+        <Link href="/usuario/novo">
+          <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >Criar Novo Usuário</button>
+        </Link>
+      </div>
 
-      <Link href="/usuario/novo">
-        <button>Criar Novo Usuário</button>
-      </Link>
-
-      <ul>
+      <ul className="flex flex-col gap-4">
         {usuarios !== undefined ? (
           usuarios.map((usuario) => (
             <li key={usuario.cpf}>
