@@ -18,6 +18,10 @@ const usuario = () => {
     loadUsuarios();
   }, []);
 
+  const formatarCPF = (cpf) => {
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  };
+
   const loadUsuarios = async () => {
     try {
       const usuariosData = await getAllUsuario();
@@ -46,27 +50,42 @@ const usuario = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen justify-center items-center">
-      <div className="flex  gap-11">
-        <h1 className="text-2xl font-black" >Lista de Usuários</h1>
+    <div className="flex flex-col h-screen max-w-7xl justify-center m-auto ">
+      <div className="flex justify-between items-center w-full">
+        <h1 className="text-2xl font-black" >Lista de usuários</h1>
         <Link href="/usuario/novo">
-          <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >Criar Novo Usuário</button>
+          <button 
+            className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" >
+              Criar novo usuário
+          </button>
         </Link>
       </div>
 
-      <ul className="flex flex-col gap-4">
-        {usuarios !== undefined ? (
-          usuarios.map((usuario) => (
-            <li key={usuario.cpf}>
-              <p>CPF: {usuario.cpf}</p>
-              <p>Nome: {usuario.nome}</p>
-              <p>Email: {usuario.email}</p>
-            </li>
-          ))
-        ) : (
-          <p>Não existem usuários cadastrados.</p>
-        )}
-      </ul>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-6">
+        <table className="w-full text-base text-left rtl:text-right text-gray-800 ">
+          <thead className="text-base text-white uppercase bg-blue-800">
+            <tr>
+              <th className="px-6 py-3 text-base">CPF</th>
+              <th className="px-6 py-3 text-base">Nome</th>
+              <th className="px-6 py-3 text-base">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usuarios !== undefined ? (
+              usuarios.map((usuario) => (
+                <tr key={usuario.cpf}>
+                  <td className="px-6 py-4 text-base">{formatarCPF(usuario.cpf)}</td>
+                  <td className="px-6 py-4 text-base">{usuario.nome}</td>
+                  <td className="px-6 py-4 text-base">{usuario.email}</td>
+                </tr>
+              ))
+            ) : (
+              <p>Não existem usuários cadastrados.</p>
+            )}
+          </tbody>
+        </table>
+      </div>
+
     </div>
   );
 };
