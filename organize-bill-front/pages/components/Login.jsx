@@ -18,6 +18,7 @@ const Login = () => {
       const respostaLogin = await loginUsuario(novoUsuario.email, novoUsuario.senha);
       console.log('Resposta do login:', respostaLogin);
       localStorage.setItem('usuario', JSON.stringify(respostaLogin));
+      window.location.href = '/usuario';
 
     } catch (error) {
       console.error('Erro ao fazer login:', error);
