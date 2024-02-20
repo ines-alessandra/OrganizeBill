@@ -94,7 +94,7 @@ const novoUsuarioPage = () => {
         </label>
         <input
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full p-1.5  "
-          type="text"
+          type="password"
           id="senha"
           name="senha"
           value={novoUsuario.senha}

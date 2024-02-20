@@ -80,6 +80,8 @@ public class Facade {
 		return despesasService.getDespesasByData(cpf,data,fixo);
 	}
 
+
+
 	public double calcularTotalDespesasData(String cpf, String data, boolean fixo) {
 		findUsuarioByCpf(cpf);
 		List<Despesas> despesas = this.getDespesasByData(cpf, data , fixo);

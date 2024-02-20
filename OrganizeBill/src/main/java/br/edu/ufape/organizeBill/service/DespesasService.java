@@ -75,21 +75,26 @@ public class DespesasService implements DespesasServiceInterface {
 				termino = inicio;
 				break;
 			case "semana":
-				inicio = LocalDate.now();
-				termino = LocalDate.now().minusDays(7);
+				inicio = LocalDate.now().minusDays(7);
+				termino = LocalDate.now();
 				break;
 			case "mes":
 				inicio = LocalDate.now().withDayOfMonth(1);
 				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
 				break;
-			case "mesPassado":
-				inicio = LocalDate.now().minusMonths(1).withDayOfMonth(1);
-				termino = LocalDate.now().minusMonths(1).withDayOfMonth(LocalDate.now().minusMonths(1).lengthOfMonth());
+			case "trimestral":
+				inicio = LocalDate.now().withDayOfMonth(1).minusMonths(2);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
+			case "semestral":
+				inicio = LocalDate.now().withDayOfMonth(1).minusMonths(5);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
 				break;
 			case "ano":
 				inicio = LocalDate.now().withDayOfYear(1);
 				termino = LocalDate.now().withDayOfYear(LocalDate.now().lengthOfYear());
 				break;
+
 			default:
 				throw new IllegalArgumentException("Data inválida: " + data);
 		}
@@ -110,11 +115,19 @@ public class DespesasService implements DespesasServiceInterface {
 				termino = inicio;
 				break;
 			case "semana":
-				inicio = LocalDate.now();
-				termino = LocalDate.now().minusDays(7);
+				inicio = LocalDate.now().minusDays(7);
+				termino = LocalDate.now();
 				break;
 			case "mes":
 				inicio = LocalDate.now().withDayOfMonth(1);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
+			case "trimestral":
+				inicio = LocalDate.now().withDayOfMonth(1).minusMonths(2);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
+			case "semestral":
+				inicio = LocalDate.now().withDayOfMonth(1).minusMonths(5);
 				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
 				break;
 			case "ano":

@@ -3,9 +3,12 @@
 import React from 'react'
 import { loginUsuario } from '../api/usuario'; 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const Login = () => {
+  const router = useRouter();
+ 
   const [novoUsuario, setNovoUsuario] = useState({
     email: '',
     senha: '',
@@ -20,6 +23,7 @@ const Login = () => {
       localStorage.setItem('usuario', JSON.stringify(respostaLogin));
       window.location.href = '/usuario';
 
+      router.push("/receita")
     } catch (error) {
       console.error('Erro ao fazer login:', error);
     }
