@@ -71,6 +71,14 @@ public class ReceitaService implements ReceitaServiceInterface {
 				inicio = LocalDate.now().withDayOfMonth(1);
 				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
 				break;
+			case "trimestral":
+				inicio = LocalDate.now().withDayOfMonth(1).minusMonths(2);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
+			case "semestral":
+				inicio = LocalDate.now().withDayOfMonth(1).minusMonths(5);
+				termino = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+				break;
 			case "ano":
 				inicio = LocalDate.now().withDayOfYear(1);
 				termino = LocalDate.now().withDayOfYear(LocalDate.now().lengthOfYear());
