@@ -76,6 +76,14 @@ public class DespesasController {
 			.map(DespesasResponse::new)
 			.toList();
 	}
+
+	@GetMapping("despesas/categoria/{codCategoria}/{data}")
+	public List<DespesasResponse> findDespesasByCategoriaData(@PathVariable long codCategoria, @PathVariable String data) {
+		return facade.getDespesasByCategoriaData(codCategoria,data)
+				.stream()
+				.map(DespesasResponse::new)
+				.toList();
+	}
 	
 	@PostMapping("despesas/{id}")
 	public DespesasResponse updateDespesas(@PathVariable Long id, @Valid @RequestBody DespesasRequest obj) {
