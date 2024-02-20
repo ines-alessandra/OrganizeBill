@@ -40,9 +40,6 @@ const receita = () => {
         }
     };
 
-
-
-
     return (
         <div>
             <h1>Receitas</h1>

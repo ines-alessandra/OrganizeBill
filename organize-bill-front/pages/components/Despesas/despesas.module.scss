@@ -2,17 +2,18 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  
   color: black;
-  margin: 0 0 2em 0;
+  margin: 2em ;
 
     &__header{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       
       font-size: 1em;
       
-      margin: 4em 4em 0em 4em;
+      margin: 4em 8em 0em 8em;
       &_title{
         font-size: 1.5em;
         font-weight: bold;
@@ -34,43 +35,66 @@
       }
     }
     &__content{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      width: 50%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      flex-direction: row;
+      justify-items: center;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-    
-      padding: 2em;
       &_body{
-        
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
         justify-content: center;
+        border-radius: 2em;
+        border: 1px solid rgba(44, 44, 194,0.5);
         gap: 1em;
         &_icon{
-          width: 5em;
           display: flex;
           align-items: center;
           justify-content: right;
-          padding: 1em;
-          margin-left: 1em;
+          padding: 1em 0.5em;
+          margin-left: 0.2em;
           font-size: 2.5em;
           border-right: 2px dashed rgba(44, 44, 194,0.5);
           span{
-            position: absolute;
             font-weight: bold;
-            color: green;
-          
+            color: red;
           }
         }
         &_text{
           width: 20em;
-          margin-left: -2em;
           padding: 0;
           display: flex;
           flex-direction: column;
           text-align: left;
+          padding: 1em;
+          border-right: 2px dashed rgba(44, 44, 194,0.5);
+
+          h2{
+            color: rgba(44, 44, 194,1);
+            font-weight: bold;
+          }
+          div{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            label{
+              color: rgba(44, 44, 194,1);
+
+              font-weight: bold;
+            }
+          }
+        }
+        &_button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1em;
+          font-weight: bold;
+          color: rgba(44, 44, 194,1);
+          background-color: #fff;
+          gap: 1em;
         }
       }
     
