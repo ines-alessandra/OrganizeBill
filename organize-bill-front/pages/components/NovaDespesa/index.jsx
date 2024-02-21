@@ -49,7 +49,6 @@ const NovaDespesa = () => {
     }
   };
   const handleSubmit = async (e) => {
-    e.preventDefault();
     // Supondo que a categoria seja selecionada pelo codCategoria e o usuário esteja armazenado em localStorage
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     const categoriaCompleta = categorias.find(c => c.codCategoria === despesa.categoriaCod);
@@ -58,10 +57,10 @@ const NovaDespesa = () => {
       categoria: categoriaCompleta,
       usuario: usuario,
     };
-    console.log(novaDespesa);
     try {
       await createDespesa(novaDespesa);
       // Tratar sucesso da criação da despesa
+      window.location.href = "/despesa";
     } catch (error) {
       console.error('Erro ao criar despesa:', error);
     }

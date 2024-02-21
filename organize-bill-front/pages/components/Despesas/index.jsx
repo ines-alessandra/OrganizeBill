@@ -34,18 +34,6 @@ const Despesas = ({despesa}) => {
   }
   );
 
-
-
-  const handleExcluirDespesa = async (id) => {
-    try {
-      await deleteDespesa(id);
-      setDespesas([]);
-      mutate();
-    } catch (error) {
-      console.error('Erro ao excluir despesa:', error);
-    }
-  };
-  console.log(editar)
   return (
     <div className="flex flex-col h-screen max-w-7xl justify-center m-auto" >
       <div className="flex justify-between items-center w-full ">
