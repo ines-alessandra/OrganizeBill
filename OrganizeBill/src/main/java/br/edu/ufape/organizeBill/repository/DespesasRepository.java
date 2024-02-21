@@ -12,9 +12,9 @@ import br.edu.ufape.organizeBill.model.Despesas;
 @Repository
 public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 
-	List<Despesas> findByCategoria(Categoria categoria);
-	List<Despesas> findDespesasByDataBetweenAndUsuarioCpf(LocalDate startDate,LocalDate endDate, String cpf);
-    List<Despesas> findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrue(LocalDate startDate,LocalDate endDate, String cpf);
-    List<Despesas> findDespesasByDataBetweenAndCategoriaCodCategoria(LocalDate startDate,LocalDate endDate, long codCategoria);
+	List<Despesas> findByCategoriaOrderByData(Categoria categoria);
+	List<Despesas> findDespesasByDataBetweenAndUsuarioCpfOrderByData(LocalDate startDate,LocalDate endDate, String cpf);
+    List<Despesas> findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrueOrderByData(LocalDate startDate,LocalDate endDate, String cpf);
+    List<Despesas> findDespesasByDataBetweenAndCategoriaCodCategoriaOrderByData(LocalDate startDate,LocalDate endDate, long codCategoria);
 	
 }

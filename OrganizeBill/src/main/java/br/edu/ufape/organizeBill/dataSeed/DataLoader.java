@@ -58,8 +58,12 @@ public class DataLoader implements CommandLineRunner {
 			
 			Receita receita1 = new Receita(	0,"salario", 2000.0, LocalDate.of(2024,2,15), user1, true);
 			Receita receita2 = new Receita(	0,"renda extra", 350.0, LocalDate.of(2024,2,5), user1, false);
+			Receita receita5 = new Receita(	0,"renda extra", 350.0, LocalDate.of(2024,1,5), user1, false);
+			Receita receita6 = new Receita(	0,"renda extra", 350.0, LocalDate.of(2023,12,5), user1, false);
 			receitaRepository.save(receita1);
 			receitaRepository.save(receita2);
+			receitaRepository.save(receita5);
+			receitaRepository.save(receita6);
 			
 			Receita receita3 = new Receita(	0,"salario", 4000.0, LocalDate.of(2024,6,8), user2, true);
 			Receita receita4 = new Receita(	0,"renda extra", 500.0, LocalDate.of(2024,6,8), user2, false);
@@ -102,14 +106,14 @@ public class DataLoader implements CommandLineRunner {
 			Usuario user1 = userRepository.findByCpf("11571988733");
 			List<Categoria> categorias1 = categoriaRepository.findByUsuarioCpf("11571988733");
 			
-			Despesas despesas1 = new Despesas(0, "aluguel", 340.0, LocalDate.of(2024,2,5), categorias1.get(0), user1, true);
+			Despesas despesas1 = new Despesas(0, "aluguel", 340.0, LocalDate.of(2024,1,5), categorias1.get(0), user1, true);
 			Despesas despesas2 = new Despesas(0, "luz", 30.0, LocalDate.of(2024,2,5), categorias1.get(0), user1, true);
-			Despesas despesas3 = new Despesas(0, "agua", 25.0, LocalDate.of(2024,2,5), categorias1.get(0), user1, true);
-			Despesas despesas4 = new Despesas(0, "academia", 109.0, LocalDate.of(2024,2,15), categorias1.get(2), user1, true);
+			Despesas despesas3 = new Despesas(0, "agua", 25.0, LocalDate.of(2024,1,5), categorias1.get(0), user1, true);
+			Despesas despesas4 = new Despesas(0, "academia", 109.0, LocalDate.of(2023,11,15), categorias1.get(2), user1, true);
 			Despesas despesas5 = new Despesas(0, "psicologa", 400.0, LocalDate.of(2024,2,18), categorias1.get(2), user1, true);
-			Despesas despesas6 = new Despesas(0, "tenis", 300.0, LocalDate.of(2024,2,9), categorias1.get(3), user1, false);
-			Despesas despesas7 = new Despesas(0, "feira", 340.0, LocalDate.of(2024,2,6), categorias1.get(1), user1, true);
-			Despesas despesas8 = new Despesas(0, "lanche", 50.0, LocalDate.of(2024,2,5), categorias1.get(1), user1, false);
+			Despesas despesas6 = new Despesas(0, "tenis", 300.0, LocalDate.of(2024,1,9), categorias1.get(3), user1, false);
+			Despesas despesas7 = new Despesas(0, "feira", 340.0, LocalDate.of(2023,12,6), categorias1.get(1), user1, true);
+			Despesas despesas8 = new Despesas(0, "lanche", 50.0, LocalDate.of(2024,1,5), categorias1.get(1), user1, false);
 			Despesas despesas9 = new Despesas(0, "internet", 25.0, LocalDate.of(2024,2,5), categorias1.get(0), user1, true);
 			despesasRepository.save(despesas1);
 			despesasRepository.save(despesas2);

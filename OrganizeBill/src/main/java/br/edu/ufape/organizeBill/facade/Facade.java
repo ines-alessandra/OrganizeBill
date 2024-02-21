@@ -26,8 +26,13 @@ public class Facade {
 	 		valorMetaContinuo();
 	 		
 	    }
-	    
-	
+
+	//Relatorio--------------------------------------------------------------
+
+	public List<Object[]> findRelatorioTotalMeses(String cpf, int qntMeses){
+		 return receitaService.findRelatorioTotalMeses(cpf,qntMeses);
+	}
+
 	//Despesas--------------------------------------------------------------
 	@Autowired
 	private DespesasService  despesasService;

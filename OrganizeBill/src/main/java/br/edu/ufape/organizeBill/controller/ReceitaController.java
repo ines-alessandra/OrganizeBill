@@ -1,6 +1,7 @@
 package br.edu.ufape.organizeBill.controller;
 
 import java.util.List;
+import java.util.Objects;
 
 import br.edu.ufape.organizeBill.exception.ObjectNotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +47,12 @@ public class ReceitaController {
 			.stream()
 			.map(ReceitaResponse::new)
 			.toList();
+	}
+
+	@GetMapping("relatorio/usuario/{cpf}/{qntMes}")
+	public List<Object[]> findReceitaByData(@PathVariable String cpf, @PathVariable int qntMes) {
+		return facade.findRelatorioTotalMeses(cpf,qntMes);
+
 	}
 	
 	@PostMapping("receita")

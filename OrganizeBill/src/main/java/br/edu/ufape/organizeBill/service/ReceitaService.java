@@ -88,9 +88,18 @@ public class ReceitaService implements ReceitaServiceInterface {
 		}
 
 		if (fixo)
-			return repository.findReceitasByDataBetweenAndUsuarioCpfAndFixoIsTrue (inicio, termino,cpf);
+			return repository.findReceitasByDataBetweenAndUsuarioCpfAndFixoIsTrueOrderByDataDesc (inicio, termino,cpf);
 		else
-			return repository.findReceitasByDataBetweenAndUsuarioCpf (inicio, termino,cpf);
+			return repository.findReceitasByDataBetweenAndUsuarioCpfOrderByDataDesc (inicio, termino,cpf);
 	}
-	
+
+	public List<Object[]> findRelatorioTotalMeses(String cpf, int qntMeses) {
+		// Calcula a data de início subtraindo a quantidade de meses da data atual
+		LocalDate startDate = LocalDate.now().minusMonths(qntMeses);
+		// A data de fim é a data atual
+		LocalDate endDate = LocalDate.now();
+
+		// Chama o método do repositório passando as datas de início e fim como parâmetros
+		return repository.findResumoReceitasDespesasParaUsuarioEIntervalo(cpf, startDate, endDate);
+	}
 }
