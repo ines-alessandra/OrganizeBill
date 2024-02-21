@@ -1,6 +1,6 @@
 "use client"
 
-import { updateDespesa } from "@/pages/api/despesa";
+import { deleteDespesa, updateDespesa } from "@/pages/api/despesa";
 import { PaperAirplaneIcon, PencilIcon, TrashIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useState } from "react";
@@ -29,6 +29,15 @@ const Despesa = ({despesa, index}) => {
       window.location.reload();
     } catch (error) {
       console.error('Erro ao editar despesa:', error);
+    }
+  };
+
+  const handleExcluirDespesa = async (id) => {
+    try {
+      deleteDespesa(id);
+      window.location.reload();
+    } catch (error) {
+      console.error('Erro ao excluir despesa:', error);
     }
   };
   return (

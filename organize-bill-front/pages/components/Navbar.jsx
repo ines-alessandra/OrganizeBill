@@ -24,6 +24,11 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/categoria">
+                  <p>Categoria</p>
+                </Link>
+              </li>
+              <li>
                 <Link href="/objetivo">
                   <p>Objetivos</p>
                 </Link>
