@@ -47,7 +47,7 @@ public class DespesasService implements DespesasServiceInterface {
 	}
 	
 	public List<Despesas> findByCategoria(Categoria categoria){
-		List<Despesas> despesas = repository.findByCategoria(categoria);
+		List<Despesas> despesas = repository.findByCategoriaOrderByData(categoria);
 		if(despesas.isEmpty()) {
 			throw new ObjectNotFoundException("Despesas");
 		}
@@ -100,9 +100,9 @@ public class DespesasService implements DespesasServiceInterface {
 		}
 
 		if (fixo)
-			return repository.findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrue (inicio, termino,cpf);
+			return repository.findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrueOrderByData (inicio, termino,cpf);
 		else
-			return repository.findDespesasByDataBetweenAndUsuarioCpf (inicio, termino,cpf);
+			return repository.findDespesasByDataBetweenAndUsuarioCpfOrderByData (inicio, termino,cpf);
 	}
 	
 	public List<Despesas> getDespesasByCategoriaData(Long codCategoria, String data) {
@@ -137,7 +137,7 @@ public class DespesasService implements DespesasServiceInterface {
 			default:
 				throw new IllegalArgumentException("Data inválida: " + data);
 		}
-			return repository.findDespesasByDataBetweenAndCategoriaCodCategoria(inicio, termino, codCategoria);
+			return repository.findDespesasByDataBetweenAndCategoriaCodCategoriaOrderByData(inicio, termino, codCategoria);
 	}
 	
 }
