@@ -42,9 +42,6 @@ const receita = () => {
         }
     };
 
-
-
-
     return (
         <div className="flex flex-col h-screen max-w-7xl justify-center m-auto" >
             <div className="flex justify-between items-center w-full ">

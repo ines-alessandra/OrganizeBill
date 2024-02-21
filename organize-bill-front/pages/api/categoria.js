@@ -2,7 +2,7 @@ import api from "./http-common";
 
 export async function getAllCategoria(cpf) {
   try {
-    const response = await api.get(`/usuario/categoria/${cpf}`);
+    const response = await api.get(`/usuario/${cpf}/categoria`);
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar categorias:', error);
@@ -20,7 +20,7 @@ export async function getCategoriaById(id) {
   }
 }
 
-export async function createReceita(categoriaData) {
+export async function createCategoria(categoriaData) {
   try {
     const response = await api.post('/categoria', categoriaData, {
       headers: {
