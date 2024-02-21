@@ -20,7 +20,7 @@ export async function getCategoriaById(id) {
   }
 }
 
-export async function createReceita(categoriaData) {
+export async function createCategoria(categoriaData) {
   try {
     const response = await api.post('/categoria', categoriaData, {
       headers: {

@@ -20,9 +20,9 @@ export async function getDespesaById(id) {
   }
 }
 
-export async function createDespesa(receitaData) {
+export async function createDespesa(despesaData) {
   try {
-    const response = await api.post('/despesas', receitaData, {
+    const response = await api.post('/despesas', despesaData, {
       headers: {
         'Content-Type': 'application/json',
       },

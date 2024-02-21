@@ -1,12 +1,9 @@
-import { getAllCategoria } from "@/pages/api/categoria";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 
-import style from './despesas.module.scss';
-import Image from "next/image";
 import Link from "next/link";
-import { deleteDespesa, getDespesaByData, updateDespesa } from "@/pages/api/despesa";
-import { DocumentPlusIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { deleteDespesa, getDespesaByData } from "@/pages/api/despesa";
+import { DocumentPlusIcon } from "@heroicons/react/24/solid";
 import Despesa from "../Despesa";
 
 
@@ -45,7 +42,7 @@ const Despesas = ({despesa}) => {
       setDespesas([]);
       mutate();
     } catch (error) {
-      console.error('Erro ao excluir receita:', error);
+      console.error('Erro ao excluir despesa:', error);
     }
   };
   console.log(editar)
@@ -54,9 +51,9 @@ const Despesas = ({despesa}) => {
       <div className="flex justify-between items-center w-full ">
         <h1 className="text-2xl font-black" >Receitas</h1>
         <div className="flex gap-3">
-          <Link href="/receita/novo">
+          <Link href="/despesa/nova">
             <button
-              className="flex gap-2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" >
+              className="flex gap-2 focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" >
               <DocumentPlusIcon className="h-4 w-4 text-white" />
               Adicionar Despesa
             </button>
