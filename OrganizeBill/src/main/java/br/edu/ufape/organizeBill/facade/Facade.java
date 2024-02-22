@@ -18,8 +18,8 @@ import br.edu.ufape.organizeBill.service.*;
 public class Facade {
 	
 	 @Scheduled(
-			 cron = "0 0 0 1 * *"
-			//fixedRate = 10000
+			// cron = "0 0 0 1 * *"
+			fixedRate = 300000
 			 ) // Executer à meia-noite no primer dia de cada mês
 	    public void verificarMudancaDeMes() {
 		 	receitasContinuas();
