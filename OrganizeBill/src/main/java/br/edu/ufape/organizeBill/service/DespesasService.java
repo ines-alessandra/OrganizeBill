@@ -139,5 +139,15 @@ public class DespesasService implements DespesasServiceInterface {
 		}
 			return repository.findDespesasByDataBetweenAndCategoriaCodCategoriaOrderByData(inicio, termino, codCategoria);
 	}
+
+	public List<Object[]> findRelatorioDespesasTotalMeses(String cpf, int qntMeses) {
+		// Calcula a data de início subtraindo a quantidade de meses da data atual
+		LocalDate startDate = LocalDate.now().minusMonths(qntMeses);
+		// A data de fim é a data atual
+		LocalDate endDate = LocalDate.now();
+
+		// Chama o método do repositório passando as datas de início e fim como parâmetros
+		return repository.findResumoDespesasParaUsuarioEIntervalo(cpf, startDate, endDate);
+	}
 	
 }
