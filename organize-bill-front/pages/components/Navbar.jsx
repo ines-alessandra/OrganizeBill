@@ -48,16 +48,23 @@ const Navbar = () => {
                   <p>Receitas</p>
                 </Link>
               </li>
+              <li>
+                <Link href="/relatorio">
+                  <p>Relatórios</p>
+                </Link>
+              </li>
             </ul>
             <div>
               {user ? (
                 <div className="flex gap-2">
-                  <UserCircleIcon className="h-6 w-6 text-white" />
-                  <p className="text-white" >Olá, {user.nome}!</p>
-                  {/* <button>Sair</button> */}
+                  <Link className="flex gap-2" href="perfil">
+                    <UserCircleIcon className="h-6 w-6 text-white" />
+                    <p className="text-white" >Olá, {user.nome}!</p>
+                    {/* <button>Sair</button> */}
+                  </Link>
                 </div>
               ) : (
-                <p>Faça login para acessar.</p>
+                <p className="text-white">Faça login para acessar.</p>
               )}
             </div>
             {/* <Button /> */}
