@@ -73,9 +73,19 @@ export async function getTotalDespesaMensais(cpf, data, tipo) {
   }
 }
 
-export async function getDespesaByCategoria(categoriaId) {
+export async function getDespesaByCategoria(categoriaId,data, fixo) {
     try {
-      const response = await api.get(`/despesas/categoria/${categoriaId}`);
+      const response = await api.get(`/despesas/categoria/${categoriaId}/${data}/${fixo}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Erro ao obter despesas com categoria ID ${categoriaId}:`, error);
+      throw error;
+    }
+  }
+
+  export async function getTotalDespesaByCategoria(categoriaId) {
+    try {
+      const response = await api.get(`/despesas/total/categoria/${categoriaId}`);
       return response.data;
     } catch (error) {
       console.error(`Erro ao obter despesas com categoria ID ${categoriaId}:`, error);

@@ -1,5 +1,6 @@
 package br.edu.ufape.organizeBill.facade;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -92,6 +93,10 @@ public class Facade {
 		return despesasService.getDespesasByData(cpf,data,fixo);
 	}
 
+	public BigDecimal getTotalMensalByCategoria(long codCategoria){
+		return despesasService.getTotalMensalByCategoria(codCategoria);
+	}
+
 
 
 	public double calcularTotalDespesasData(String cpf, String data, boolean fixo) {
@@ -107,13 +112,13 @@ public class Facade {
 				.sum();
 	}
 	
-	public List<Despesas> getDespesasByCategoriaData(long codCategoria, String data) {
-		return despesasService.getDespesasByCategoriaData(codCategoria,data);
+	public List<Despesas> getDespesasByCategoriaData(long codCategoria, String data, boolean fixo) {
+		return despesasService.getDespesasByCategoriaData(codCategoria,data,fixo);
 	}
 
-	public double calcularTotalDespesasCategoriaData(long codCategoria, String data) {
+	public double calcularTotalDespesasCategoriaData(long codCategoria, String data,boolean fixo) {
 		findCategoriaById(codCategoria);
-		List<Despesas> despesas = this.getDespesasByCategoriaData(codCategoria, data);
+		List<Despesas> despesas = this.getDespesasByCategoriaData(codCategoria, data, fixo);
 
 		if (despesas.isEmpty()) {
 			throw new ObjectNotFoundException("Despesas");
@@ -253,7 +258,7 @@ public class Facade {
 	private ObjetivoFinanceiroService  objetivoFinanceiroService;
 		
 	public ObjetivoFinanceiro saveObjetivoFinanceiro(ObjetivoFinanceiro newInstance) {
-		Categoria categoria = new Categoria(0,newInstance.getNome(),newInstance.getDescricao(),newInstance.getValorTransitorio()
+		Categoria categoria = new Categoria(0,"Objetivo: "+newInstance.getNome(),newInstance.getDescricao(),newInstance.getValorTransitorio()
 				, newInstance.getUsuario());
 		saveCategoria(categoria);
 		newInstance.setCategoria(categoria);

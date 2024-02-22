@@ -92,6 +92,7 @@ const Despesa = ({despesa, index}) => {
         :
         <tr key={index} >
           <td className="px-6 py-3 text-base" >{despesa.descricao}</td >
+          <td className="px-6 py-3 text-base" >{despesa.categoria.nome}</td >
           <td className="px-6 py-3 text-base" >{despesa.valor}</td>
           <td className="px-6 py-3 text-base" >{despesa.data}</td>
           <td className="px-6 py-3 text-base" >{despesa.fixo ? 'Sim' : 'Não'}</td>

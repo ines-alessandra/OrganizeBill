@@ -55,7 +55,7 @@ export async function deleteObjetivo(id) {
 
 export async function addValueObjetivo(id, value) {
     try {
-      const response = await api.post(`/objetivoFinanceiro/${id}/valor${value}`);
+      const response = await api.post(`/objetivoFinanceiro/${id}/valor/${value}`);
       return response.data;
     } catch (error) {
       console.error(`Erro ao depositar valor em objetivoFinanceiro com ID ${id}:`, error);

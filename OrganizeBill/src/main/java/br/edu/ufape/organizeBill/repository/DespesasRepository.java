@@ -1,5 +1,6 @@
 package br.edu.ufape.organizeBill.repository;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 	List<Despesas> findDespesasByDataBetweenAndUsuarioCpfOrderByData(LocalDate startDate,LocalDate endDate, String cpf);
     List<Despesas> findDespesasByDataBetweenAndUsuarioCpfAndFixoIsTrueOrderByData(LocalDate startDate,LocalDate endDate, String cpf);
     List<Despesas> findDespesasByDataBetweenAndCategoriaCodCategoriaOrderByData(LocalDate startDate,LocalDate endDate, long codCategoria);
+    List<Despesas> findDespesasByDataBetweenAndCategoriaCodCategoriaAndFixoIsTrueOrderByData(LocalDate startDate,LocalDate endDate, long codCategoria);
 
     @Query(value = """
     WITH meses AS (
@@ -40,6 +42,9 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
     ORDER BY meses.mes ASC
     """, nativeQuery = true)
     List<Object[]> findResumoDespesasParaUsuarioEIntervalo(@Param("usuarioCpf") String usuarioCpf, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    @Query(value = "SELECT SUM(valor) AS total_despesas FROM despesas WHERE categoria_cod_categoria = :codCategoria AND data BETWEEN DATE_TRUNC('month', CURRENT_DATE) AND CURRENT_DATE", nativeQuery = true)
+    BigDecimal findTotalDespesasPorCategoriaEMesAtual(@Param("codCategoria") Long codCategoria);
 
 
 }
