@@ -1,9 +1,10 @@
 "use client"
 
 import { deleteCategoria, updateCategoria, updatecategoria } from "@/pages/api/categoria";
+import { getTotalDespesaByCategoria } from "@/pages/api/despesa";
 import { PaperAirplaneIcon, PencilIcon, TrashIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -11,6 +12,16 @@ const Categoria = ({categoria, index}) => {
   
   const [editar, setEditar] = useState(false);
   const [editData, setEditData] = useState(categoria);
+  const [totalDespesa, setTotalDespesa] = useState(0);
+
+  useEffect(() => {
+    const fetchTotalDespesaByCategoria = async () => {
+      const totalDespesaget = await getTotalDespesaByCategoria( categoria.codCategoria);
+      
+      setTotalDespesa(totalDespesaget || 0);
+    };
+    fetchTotalDespesaByCategoria();
+  }, []);
 
   const editarCategoria = () => {
     if (editar === true) {
@@ -90,8 +101,12 @@ const Categoria = ({categoria, index}) => {
         <tr key={index} >
           <td className="px-6 py-3 text-base" >{categoria.nome}</td >
           <td className="px-6 py-3 text-base" >{categoria.descricao}</td>
+          <td className="px-6 py-3 text-base" >{totalDespesa}</td>
           <td className="px-6 py-3 text-base" >{categoria.gastoMedio}</td>
           <td className="flex gap-4 px-6 py-3" >
+
+          
+
             <button title="Editar" onClick={() => editarCategoria()}>
               <PencilIcon className="h-5 w-5 text-gray-800" />
             </button>

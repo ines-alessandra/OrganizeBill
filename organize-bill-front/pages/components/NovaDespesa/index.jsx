@@ -110,7 +110,7 @@ const NovaDespesa = () => {
                   <option>Selecione uma categoria</option>
                   {categorias.map((categoria) => (
                     <option key={categoria.codCategoria} value={categoria.codCategoria}>
-                      {categoria.descricao}
+                      {categoria.nome}
                     </option>
                   ))}
                 </select>

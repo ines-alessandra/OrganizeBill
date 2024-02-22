@@ -1,5 +1,6 @@
 package br.edu.ufape.organizeBill.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -105,7 +106,7 @@ public class DespesasService implements DespesasServiceInterface {
 			return repository.findDespesasByDataBetweenAndUsuarioCpfOrderByData (inicio, termino,cpf);
 	}
 	
-	public List<Despesas> getDespesasByCategoriaData(Long codCategoria, String data) {
+	public List<Despesas> getDespesasByCategoriaData(Long codCategoria, String data, boolean fixo) {
 		LocalDate inicio;
 		LocalDate termino;
 
@@ -137,7 +138,11 @@ public class DespesasService implements DespesasServiceInterface {
 			default:
 				throw new IllegalArgumentException("Data inválida: " + data);
 		}
+		if (fixo)
+			return repository.findDespesasByDataBetweenAndCategoriaCodCategoriaAndFixoIsTrueOrderByData(inicio, termino, codCategoria);
+		else
 			return repository.findDespesasByDataBetweenAndCategoriaCodCategoriaOrderByData(inicio, termino, codCategoria);
+
 	}
 
 	public List<Object[]> findRelatorioDespesasTotalMeses(String cpf, int qntMeses) {
@@ -149,5 +154,10 @@ public class DespesasService implements DespesasServiceInterface {
 		// Chama o método do repositório passando as datas de início e fim como parâmetros
 		return repository.findResumoDespesasParaUsuarioEIntervalo(cpf, startDate, endDate);
 	}
+
+	public BigDecimal getTotalMensalByCategoria(long codCategoria){
+		return repository.findTotalDespesasPorCategoriaEMesAtual(codCategoria);
+	}
+
 	
 }

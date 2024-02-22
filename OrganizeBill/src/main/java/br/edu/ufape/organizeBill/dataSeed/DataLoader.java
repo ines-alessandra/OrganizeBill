@@ -161,7 +161,7 @@ public class DataLoader implements CommandLineRunner {
 																  LocalDate.of(2024,1,5), 200.0,
 																  LocalDate.of(2024,10,26), 3000.0, 2800.0,
 																  "ingresso, passagem, hotel para o show, etc", null, user1);
-			Categoria categoria1 = new Categoria(0,objetivo1.getNome(),objetivo1.getDescricao(),objetivo1.getValorTransitorio()
+			Categoria categoria1 = new Categoria(0,"Objetivo: "+objetivo1.getNome(),objetivo1.getDescricao(),objetivo1.getValorTransitorio()
 					, objetivo1.getUsuario());
 			categoriaRepository.save(categoria1);
 			objetivo1.setCategoria(categoria1);
@@ -172,6 +172,22 @@ public class DataLoader implements CommandLineRunner {
 			despesasRepository.save(despesas1);
 			despesasRepository.save(despesas2);
 			despesasRepository.save(despesas3);
+
+			ObjetivoFinanceiro objetivo2 = new ObjetivoFinanceiro(0, "Viagem Porto de Galinhas",
+					LocalDate.of(2023,5,5), 200.0,
+					LocalDate.of(2023,10,26), 5000.0, 5000.0,
+					"praia, hospedagem", null, user1);
+			Categoria categoria2 = new Categoria(0,"Objetivo: "+objetivo2.getNome(),objetivo2.getDescricao(),objetivo2.getValorTransitorio()
+					, objetivo2.getUsuario());
+			categoriaRepository.save(categoria2);
+			objetivo2.setCategoria(categoria2);
+			objetivoRepository.save(objetivo2);
+			Despesas despesas4 = new Despesas(0, "valor transferido para objetivo", 500.0, LocalDate.of(2024,3,8), categoria2, user1, false);
+			Despesas despesas5 = new Despesas(0, "valor transferido para objetivo", 500.0, LocalDate.of(2024,4,8), categoria2, user1, false);
+			Despesas despesas6 = new Despesas(0, "valor transferido para objetivo", 2000.0, LocalDate.of(2024,10,8), categoria2, user1, false);
+			despesasRepository.save(despesas4);
+			despesasRepository.save(despesas5);
+			despesasRepository.save(despesas6);
 		
 		}
 		System.out.println(objetivoRepository.count());

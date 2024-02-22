@@ -22,7 +22,7 @@ const Login = () => {
       console.log('Resposta do login:', respostaLogin);
       localStorage.setItem('usuario', JSON.stringify(respostaLogin));
       window.location.href = '/usuario';
-
+      
       router.push("/receita")
     } catch (error) {
       console.error('Erro ao fazer login:', error);

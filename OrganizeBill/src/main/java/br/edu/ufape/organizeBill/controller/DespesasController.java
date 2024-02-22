@@ -1,5 +1,6 @@
 package br.edu.ufape.organizeBill.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
@@ -83,12 +84,18 @@ public class DespesasController {
 
 	}
 
-	@GetMapping("despesas/categoria/{codCategoria}/{data}")
-	public List<DespesasResponse> findDespesasByCategoriaData(@PathVariable long codCategoria, @PathVariable String data) {
-		return facade.getDespesasByCategoriaData(codCategoria,data)
+	@GetMapping("despesas/categoria/{codCategoria}/{data}/{fixo}")
+	public List<DespesasResponse> findDespesasByCategoriaData(@PathVariable long codCategoria, @PathVariable String data, @PathVariable boolean fixo) {
+		return facade.getDespesasByCategoriaData(codCategoria,data,fixo)
 				.stream()
 				.map(DespesasResponse::new)
 				.toList();
+	}
+
+	@GetMapping("despesas/total/categoria/{codCategoria}")
+	public BigDecimal getTotalMensalByCategoria(@PathVariable long codCategoria) {
+		return facade.getTotalMensalByCategoria(codCategoria);
+
 	}
 	
 	@PostMapping("despesas/{id}")

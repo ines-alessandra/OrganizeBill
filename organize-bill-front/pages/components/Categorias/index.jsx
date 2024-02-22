@@ -58,7 +58,8 @@ const Categorias = () => {
             <tr>
               <th className="px-6 py-3 text-base" >Nome</th>
               <th className="px-6 py-3 text-base" >Descrição</th>
-              <th className="px-6 py-3 text-base" >Gasto Médio</th>
+              <th className="px-6 py-3 text-base" >Gasto Atual</th>
+              <th className="px-6 py-3 text-base" >Meta de Gasto</th>
               <th className="px-6 py-3 text-base" >Ações</th>
             </tr>
           </thead>
