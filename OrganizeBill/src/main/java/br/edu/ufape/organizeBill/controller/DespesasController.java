@@ -77,6 +77,12 @@ public class DespesasController {
 			.toList();
 	}
 
+	@GetMapping("relatorio/despesa/usuario/{cpf}/{qntMes}")
+	public List<Object[]> findRelatorioDespesaByData(@PathVariable String cpf, @PathVariable int qntMes) {
+		return facade.findRelatorioDespesaTotalMeses(cpf,qntMes);
+
+	}
+
 	@GetMapping("despesas/categoria/{codCategoria}/{data}")
 	public List<DespesasResponse> findDespesasByCategoriaData(@PathVariable long codCategoria, @PathVariable String data) {
 		return facade.getDespesasByCategoriaData(codCategoria,data)

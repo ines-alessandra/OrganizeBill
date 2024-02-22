@@ -48,5 +48,27 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     ORDER BY meses.mes ASC
     """, nativeQuery = true)
     List<Object[]> findResumoReceitasDespesasParaUsuarioEIntervalo(@Param("usuarioCpf") String usuarioCpf, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    @Query(value = """
+    WITH meses AS (
+        SELECT DATE_TRUNC('month', data) AS mes
+        FROM receita
+        WHERE usuario_cpf = :usuarioCpf AND data BETWEEN :startDate AND :endDate
+        GROUP BY DATE_TRUNC('month', data)
+    ),
+    total_receitas AS (
+        SELECT DATE_TRUNC('month', data) AS mes, SUM(valor) AS total_receita
+        FROM receita
+        WHERE usuario_cpf = :usuarioCpf AND data BETWEEN :startDate AND :endDate
+        GROUP BY DATE_TRUNC('month', data)
+    )
+    SELECT
+        TO_CHAR(meses.mes, 'YYYY-MM') AS mes,
+        total_receitas.total_receita AS total_receitas
+    FROM meses
+    LEFT JOIN total_receitas ON meses.mes = total_receitas.mes
+    ORDER BY meses.mes ASC
+    """, nativeQuery = true)
+    List<Object[]> findResumoReceitasParaUsuarioEIntervalo(@Param("usuarioCpf") String usuarioCpf, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 	
 }

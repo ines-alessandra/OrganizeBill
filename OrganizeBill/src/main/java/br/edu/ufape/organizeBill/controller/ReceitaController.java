@@ -50,8 +50,13 @@ public class ReceitaController {
 	}
 
 	@GetMapping("relatorio/usuario/{cpf}/{qntMes}")
-	public List<Object[]> findReceitaByData(@PathVariable String cpf, @PathVariable int qntMes) {
+	public List<Object[]> findRelatorioByData(@PathVariable String cpf, @PathVariable int qntMes) {
 		return facade.findRelatorioTotalMeses(cpf,qntMes);
+
+	}
+	@GetMapping("relatorio/receita/usuario/{cpf}/{qntMes}")
+	public List<Object[]> findRelatorioReceitaByData(@PathVariable String cpf, @PathVariable int qntMes) {
+		return facade.findRelatorioReceitaTotalMeses(cpf,qntMes);
 
 	}
 	

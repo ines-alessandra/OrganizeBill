@@ -32,6 +32,13 @@ public class Facade {
 	public List<Object[]> findRelatorioTotalMeses(String cpf, int qntMeses){
 		 return receitaService.findRelatorioTotalMeses(cpf,qntMeses);
 	}
+	public List<Object[]> findRelatorioReceitaTotalMeses(String cpf, int qntMeses){
+		return receitaService.findRelatorioReceitaTotalMeses(cpf,qntMeses);
+	}
+
+	public List<Object[]> findRelatorioDespesaTotalMeses(String cpf, int qntMeses){
+		return despesasService.findRelatorioDespesasTotalMeses(cpf,qntMeses);
+	}
 
 	//Despesas--------------------------------------------------------------
 	@Autowired
